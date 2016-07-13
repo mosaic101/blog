@@ -5,7 +5,17 @@ router.get('/', async function (ctx, next) {
     title: 'koa2 title'
   };
 
-  await ctx.render('index', {
-  });
+  ctx.body = 'this a index response!';
+  //await ctx.render('index', {
+  //});
 })
-module.exports = router;
+
+//б╥си
+import users from'./users';
+
+router.use('/users', users.routes());
+
+
+
+//module.exports = router;
+export default router;

@@ -35,12 +35,13 @@
     "koa-router": "^7.0.0",
     "koa-static": "^1.5.2",
     "koa-views": "^5.0.1",
+    "log4js": "^0.6.37",
     "runkoa": "^1.5.2"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "nodemon": "^1.9.1",
-    "should": "^8.3.0",
+    "mocha": "^2.5.3",
+    "nodemon": "^1.9.2",
+    "should": "^9.0.2",
     "supertest": "^1.2.0"
   }
 }

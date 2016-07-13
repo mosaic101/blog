@@ -1,21 +1,25 @@
 var request = require('supertest')
 var should = require('should')
 
-require('../bin/run')
+require('../index')
 
 var app = require('../app')
 
+
 describe('Koa GET /', function(){
-  it('respond sucess', function(done){
+  it('index test', function(done){
     request(app.listen())
-      .get('/')
+      .get('/tms/test?a=4&b=7')
       .set('Accept', 'application/text')
       .expect('Content-Type', /text/)
       .end(function(err, res) {
-        // console.log(res)
+        //console.log(res)
+
         res.status.should.equal(200);
         // console.log(res.text)
-        res.text.should.equal('<!DOCTYPE html><html><head><title>koa2 title</title><link rel="stylesheet" href="/stylesheets/style.css"></head><body><h1>koa2 title</h1><p>JADE Welcome to koa2 title</p></body></html>');
+        res.should.have.property('body').and.be.a.Object();
+        res.body.should.have.property('a').and.be.a.Number();
+        res.body.should.have.property('b').and.be.a.Number();
         done();
       });
   })
