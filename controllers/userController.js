@@ -3,7 +3,7 @@
  * intro： controller of user
  */
 var User = require("../DAO/userDAO");
-
+var jwt = require("jwt-simple");
 /**
  * index
  * @param ctx
@@ -33,7 +33,7 @@ exports.login = (ctx, next) => {
         description: '暂无简介'
     });
 
-    user.save(function(err) {
+    user.save(function(err,result) {
         if (err) {
             console.log(err);
             // callback(err);
@@ -41,5 +41,18 @@ exports.login = (ctx, next) => {
             // callback(null);
         }
     });
-    ctx.body = '/users/login response!';
+    var hello = {
+        email: "mosaic101@foxmail.com",
+        password: 123456,
+        nickname: "mosaic",
+        portrait: '/atvillage/default/portraits/0_1.jpg',
+        thumbnail: '/atvillage/default/portraits/0_1.jpg',
+        fans: 0,
+        follow: 0,
+        description: '暂无简介'
+    };
+    //存入token 加入验证时间
+    var token = jwt.encode(hello,"BLOG_APi_LOGIN"); //带有效期的token
+    // callback(null,token);
+    ctx.body = token;
 };

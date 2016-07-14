@@ -3,12 +3,13 @@
  * intro: router of user
  */
 const router = require('koa-router')();
+import authorization from '../utils/authorization';
 import userController from '../controllers/userController';
 
 //TODO test
-router.get('/',  userController.index);
+router.get('/', authorization.checkToken ,userController.index);
 //login
-router.get('/login',  userController.login);
+router.get('/login', userController.login);
 
 
 export default router;
