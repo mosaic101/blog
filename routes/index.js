@@ -8,14 +8,13 @@ router.get('/', async function (ctx, next) {
   ctx.body = 'this a index response!';
   //await ctx.render('index', {
   //});
-})
+});
 
-//·��
+//·用户
 import users from'./users';
 
 router.use('/users', users.routes());
 
 
 
-//module.exports = router;
 export default router;

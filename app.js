@@ -17,7 +17,7 @@ import logger from 'koa-logger'
 //const logger = require('koa-logger');
 ////const loggers = require('./log/logger');
 
-//Â·ÓÉÄ£¿é
+//è·¯ç”±
 const index = require('./routes/index');
 
 const app = new Koa();
@@ -28,7 +28,7 @@ app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
 
-//¼ÓÔØ¾²Ì¬×ÊÔ´
+//åŠ è½½é™æ€èµ„æº
 //app.use(convert(require('koa-static')(__dirname + '/public')));
 
 //app.use(views(__dirname + '/views', {
@@ -42,7 +42,7 @@ app.use(convert(logger()));
 
 // logger
 app.use(async (ctx, next) => {
-  //½«logger·½·¨°óµ½ctxÉÏ
+  //å°†loggeræ–¹æ³•ç»‘åˆ°ctxä¸Š
   //ctx.logger = loggers;
   console.log("...");
   const start = new Date();
@@ -61,10 +61,9 @@ app.use(index.routes(),index.allowedMethods());
 // response
 
 app.on('error', function(err, ctx){
-  console.log(err)
-  log.error('server error', err, ctx);
+  console.log(err);
+  logger.error('server error', err, ctx);
 });
 
 
-//module.exports = app;
 export default app;
