@@ -1,16 +1,50 @@
-### node + koa@2 + mongoDB + es6
-##### 用koa2搭建的博客api,前端的项目还未启动，准备用vue
+一个基于Nodejs koa2的博客api，使用MVC风格的代码架构;前端的项目还未启动，准备用vue
 
-##### 我比较喜欢MVC的分层，尽可能的service层复用
-##### 项目刚开始启动，有些地方没完善
+Folder structure
+=====
 
-### 依赖Node.js 4.0+
-### Koa requires node v4.0.0 or higher for (partial) ES2015 support.
-### 启动 node ./bin/run
+```
+.
+├── bin                         #启动脚本 node ./bin/run
+├── config                      #config
+├── controllers                 #controller
+├── models                      #model
+├── routes                      #routes
+├── schema                      #schema
+├── services                    #services
+├── test                        #test
+└── utils                       #utils
 
+```
 
-##### koa-session 依赖包是基于cookie的,已经好久不维护了。
-##### 这里用 koa-generic-session
+Features
+=====
+* markdown格式支持        //TODO
+* highlight.js 代码高亮   //TODO
+* MVC代码风格
+* comment评论            //TODO
+* message board留言板
+* Node 4.4.4
+* 启动 node ./bin/run
+* mongoose mongodb ORM module
+* 前台准备用vue.js       //TODO
+* 后台管理基于angular.js //TODO
 
-##### 觉得有帮助的给颗星，谢谢
+Install
+=====
 
+    1. npm install -g pm2
+    2. git clone https://github.com/mosaic101/blog-api.git
+    3. cd blog-api
+    4. npm install
+    5. node ./bin/run
+
+notice
+=====
+    1.需要本地安装redis，并启动
+    2.依赖Node.js 4.0+ (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
+    3.koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
+
+ps
+=====
+    觉得有帮助的给颗星，十分谢谢！
