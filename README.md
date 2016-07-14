@@ -1,1 +1,1 @@
-### node + koa + mongoDB
+### node + koa@2 + mongoDB

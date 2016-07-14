@@ -1,7 +1,9 @@
+/**
+ * Created by mosaic101 on 2016/7/11.
+ */
 import Koa from 'koa'
 import convert from 'koa-convert'
 import json from 'koa-json'
-import router from 'koa-router'
 import Bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 //import loggers from './libs/logger'
@@ -17,7 +19,7 @@ import logger from 'koa-logger'
 //const logger = require('koa-logger');
 ////const loggers = require('./log/logger');
 
-//路由
+//the index of router
 const index = require('./routes/index');
 
 const app = new Koa();
@@ -28,17 +30,12 @@ app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
 
-//加载静态资源
+//static file
 //app.use(convert(require('koa-static')(__dirname + '/public')));
 
 //app.use(views(__dirname + '/views', {
 //  extension: 'jade'
 //}));
-
-// app.use(views(__dirname + '/views-ejs', {
-//   extension: 'ejs'
-// }));
-
 
 // logger
 app.use(async (ctx, next) => {
@@ -61,7 +58,7 @@ app.use(index.routes(),index.allowedMethods());
 // response
 
 app.on('error', function(err, ctx){
-  console.log(err);
+  console.error(err);
   logger.error('server error', err, ctx);
 });
 
