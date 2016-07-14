@@ -1,39 +1,11 @@
 {
-  "img_url":"http://img.diandaimg.com",
-  "dataBase": {
-    "ctcDb": {
-      "database": "ctcdb_prod",
-      "host": "192.168.0.101",
-      "username": "ctc",
-      "password": "ctc@win@sql",
-      "dialect": "mysql",
-      "logging": false,
-      "isolationLevel": "READ COMMITTED",
-      "pool": {
-        "max": 30,
-        "min": 5,
-        "idle": 60000,
-        "maxConnections": 60,
-        "minConnections": 5,
-        "maxIdleTime": 60000
-      }
-    },
-    "statisticsDb": {
-      "database": "statistics_db",
-      "host": "192.168.0.102",
-      "username": "root",
-      "password": "tongjctc@win@db",
-      "dialect": "mysql",
-      "logging": false
-    }
-  },
   "redis": {
     "host": "127.0.0.1",
     "port": 6379,
     "db": 13,
-    "key": ".face_shopping",
-    "secret": "face_shopping"
+    "key": ".blog-api",
+    "secret": "blog-api"
   },
   "numCPUs": 1,
-  "port":43000
+  "port": 3000
 }

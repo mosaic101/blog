@@ -7,9 +7,10 @@ import authorization from '../utils/authorization';
 import userController from '../controllers/userController';
 
 //TODO test
-router.get('/', authorization.checkToken ,userController.index);
+router.get('/',authorization.checkToken,userController.index);
 //login
-router.post('/login', userController.login);
-
+router.post('/login',userController.login);
+//update
+router.post('/update',userController.update);
 
 export default router;

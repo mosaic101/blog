@@ -1,58 +1,52 @@
 /**
- * Created by mosai on 2016/7/14.
+ * Created by mosaic101 on 2016/7/14.
  */
-var mongoose     = require('mongoose');
-var Schema       = mongoose.Schema;
-var bcrypt      = require('bcryptjs');
+const UserSchema = require('../schema/UserSchema');
+const bcrypt = require('bcryptjs');
 
-// è¡¨å•ï¼Œemail, password ä¿©ä¸ªå­—æ®µ
-var AdminUserSchema   = new Schema({
-    email: { type:String, required: true},
-    password: {type:String,required:true,trim:true},
-    resetPasswordToken: String,
-    resetPasswordExpires: Date,
-    //ç”¨æˆ·å
-    nickname: {type:String, required: true},
-    //æ€§åˆ«
-    gender: {type:String, required: false},
-    portrait: {type:String, required: false},
-    thumbnail: {type:String, required: false},
-    fans: {type:Number, required: false},
-    follow: {type:Number, required: false},
-    description: {type:String, required: false},
-    created:{type:Date,default:Date.now},
-    //ç”¨æˆ·æƒé™ç±»åž‹
-    permission: {type:Object, required: false},
-    role: {type: String,required: false, ref: 'Roles'}
-});
-
-AdminUserSchema.pre('save', function(next) {
-    var user = this;
-    if (!user.isModified('password')) return next();
-    bcrypt.genSalt(10, function(err, salt) {
-        if (err) return next(err);
-        bcrypt.hash(user.password, salt, function(err, hash) {
-            if (err) return next(err);
-            user.password = hash;
-            next();
-        });
-    });
-});
-
-AdminUserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
-    });
+var User = function(opt) {
+    this.opt = opt;
 };
-AdminUserSchema.methods.encodePwd = function(pwd, callback) {
-    bcrypt.genSalt(10, function(err, salt) {
-        //if (err) return next(err);
-        bcrypt.hash(pwd, salt, function(err, hash) {
-            callback(err, hash);
+
+/**
+ * ¡¾Ìí¼ÓÓÃ»§¡¿
+ * @param callback {function}
+ */
+User.prototype.save = function (callback) {
+    var action = new UserSchema(this.opt);
+    action.save(callback);
+};
+
+/**
+ * ¡¾²éÑ¯µ¥¸öÓÃ»§¡¿
+ * @param where {object}
+ * @param callback {function}
+ */
+User.findOne = (where, callback) => {
+    UserSchema
+        .findOne(where)
+        .exec((err, doc) => {
+            callback(err, doc);
         });
-    });
-}
-module.exports = mongoose.model('Users', AdminUserSchema);
+};
+
+/**
+ * ¡¾ÐÞ¸ÄÓÃ»§ÐÅÏ¢¡¿
+ * @param where {object}
+ * @param options {object}
+ * @param callback {function}
+ */
+User.update = (where, options, callback) => {
+    UserSchema.update(where, options,{multi: true},(err, numberAffected, raw) => {
+        if(err) {
+            return callback(err);
+        }
+        callback(null, numberAffected);
+
+    })
+};
 
 
+
+
+module.exports = exports = User;
