@@ -11,7 +11,12 @@ var jwt = require("jwt-simple");
  */
 exports.index = (ctx, next) => {
     "use strict";
-    ctx.body = '/users/ response!';
+    console.log(JSON.stringify(ctx));
+    ctx.body = {
+        tag:"success",
+        status:1,
+        msg:"'!!!!!/user/ response!'"
+    };
 };
 
 /**
@@ -53,6 +58,9 @@ exports.login = (ctx, next) => {
     };
     //存入token 加入验证时间
     var token = jwt.encode(hello,"BLOG_APi_LOGIN"); //带有效期的token
-    // callback(null,token);
-    ctx.body = token;
+    ctx.body = {
+        tag:"success",
+        status:1,
+        token:token
+    };
 };

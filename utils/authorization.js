@@ -1,6 +1,6 @@
 /**
  * Created by mosaic101 on 2016/7/14.
- * introduction: 登录授权
+ * intro: 登录授权token
  */
 var jwt = require('jwt-simple');
 
@@ -10,23 +10,15 @@ var jwt = require('jwt-simple');
  * @param callback
  * @returns {*}
  */
-var getUserInfo = (ctx,callback) => {
-    try{
-        var decoded = jwt.decode(token, 'BLOG_APi_LOGIN');
-
-        if(!decoded){
-            return callback({message:"解析token失败!",status:-100});
-        }
-
-        if (decoded.exp <= Date.now()) {
-            return callback({message:"登陆已过期，请重新登陆!",status:-401});
-        }
-
-        callback(null,decoded);
-
-    }catch(error){
-        return callback({message:"签名验证错误!",status:-100});
+var getUserInfo = (token,callback) => {
+    var decoded = jwt.decode(token,"BLOG_APi_LOGIN");
+    if(!decoded){
+        return callback({message:"解析token失败!",status:-100});
     }
+    if (decoded.exp <= Date.now()) {
+        return callback({message:"登陆已过期，请重新登陆!",status:-401});
+    }
+    return callback(null,decoded);
 };
 
 /**
@@ -37,28 +29,30 @@ var getUserInfo = (ctx,callback) => {
  */
 var checkToken = (ctx,next) => {
 
-    var token = ctx.headers.authorization || null;
+    var token = ctx.header.authorization || null;
     if (!token) {
-        return ctx.json({
+        return ctx.body = {
             tag:"error",
             status: -1,
             message:"缺失token！"
-        });
+        };
     }
     //解密token
-    getUserInfo(token,function(error,result){
+    getUserInfo(token,(error,result) => {
         if(error){
-            console.log("checkToken" + error);
-            return ctx.json({
+            console.error("checkToken" + JSON.stringify(error));
+            return ctx.body = {
                 tag:"error",
                 status: error.status,
                 message: error.message
-            });
+            };
         }
-        //解析后的结果 auth
+        console.log("result"+JSON.stringify(result));
+        //解析后的结果存入session中
         ctx.session.auth = result;
         next();
-    })
+    });
+
 };
 
 
@@ -66,6 +60,5 @@ var checkToken = (ctx,next) => {
 module.exports = {
     getUserInfo: getUserInfo,
     checkToken: checkToken
-
 };
 

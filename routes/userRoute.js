@@ -9,7 +9,7 @@ import userController from '../controllers/userController';
 //TODO test
 router.get('/', authorization.checkToken ,userController.index);
 //login
-router.get('/login', userController.login);
+router.post('/login', userController.login);
 
 
 export default router;
