@@ -1,7 +1,7 @@
 /**
  * Created by mosai on 2016/7/14.
  */
-var UserModel = require('../schema/adminUserSchema');
+var UserModel = require('../models/userModel');
 
 var User = function(opt) {
     this.opt = opt;
@@ -107,7 +107,7 @@ User.getUserById = function(id, callback) {
             select: "name permissions"
         })
         .exec(function(err, doc) {
-            // console.log(doc);
+            // console.logs(doc);
             callback(err, doc);
         })
 }
@@ -178,7 +178,7 @@ User.saveUser = function(criteria, content, callback) {
 }
 
 User.searchUser = function(email, callback) {
-    // console.log(email);
+    // console.logs(email);
     UserModel.find({
         email: new RegExp(email)
     }).exec(function(err, docs) {

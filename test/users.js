@@ -13,9 +13,9 @@ describe('Koa GET /users', function(){
       .set('Accept', 'application/text')
       .expect('Content-Type', /text/)
       .end(function(err, res) {
-        //console.log(res)
+        //console.logs(res)
         res.status.should.equal(200);
-        //console.log(res.text)
+        //console.logs(res.text)
         res.should.have.property('body').and.be.a.Object();
         // res.body.should.have.property('b').and.be.a.Number();
         done();

@@ -18,7 +18,7 @@ import mongoose from 'mongoose';
 //const onerror = require('koa-onerror');
 //const bodyparser = require('koa-bodyparser')();
 //const logger = require('koa-logger');
-////const loggers = require('./log/logger');
+////const loggers = require('./logs/logger');
 
 //the index of router
 const index = require('./routes/index');
@@ -40,7 +40,7 @@ app.use(convert(logger()));
 
 //connect mongodb's database
 // mongoose.connect('mongodb://dev:root@112.124.36.12:27017/atvillage', function(err) {
-mongoose.connect('mongodb://localhost/blog', function(err) {
+mongoose.connect('mongodb://localhost/blog', (err) => {
   if (err) throw err;
   console.log("connect mongodb's database success!!!!");
 });
@@ -64,7 +64,7 @@ app.use(async (ctx, next) => {
 app.use(index.routes(),index.allowedMethods());
 
 // response
-app.on('error', function(err, ctx){
+app.on('error', (err, ctx) => {
   console.error(err);
   logger.error('server error', err, ctx);
 });
