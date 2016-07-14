@@ -1,11 +1,12 @@
 /**
  * Created by mosaic101 on 2016/7/11.
  */
-import Koa from 'koa'
-import convert from 'koa-convert'
-import json from 'koa-json'
-import Bodyparser from 'koa-bodyparser'
-import logger from 'koa-logger'
+import Koa from 'koa';
+import convert from 'koa-convert';
+import json from 'koa-json';
+import Bodyparser from 'koa-bodyparser';
+import logger from 'koa-logger';
+import mongoose from 'mongoose';
 //import loggers from './libs/logger'
 
 //const app = new Koa();
@@ -37,6 +38,13 @@ app.use(convert(logger()));
 //  extension: 'jade'
 //}));
 
+//connect mongodb's database
+// mongoose.connect('mongodb://dev:root@112.124.36.12:27017/atvillage', function(err) {
+mongoose.connect('mongodb://localhost/blog', function(err) {
+  if (err) throw err;
+  console.log("connect mongodb's database success!!!!");
+});
+
 // logger
 app.use(async (ctx, next) => {
   //将logger方法绑到ctx上
@@ -56,7 +64,6 @@ app.use(async (ctx, next) => {
 app.use(index.routes(),index.allowedMethods());
 
 // response
-
 app.on('error', function(err, ctx){
   console.error(err);
   logger.error('server error', err, ctx);

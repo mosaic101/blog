@@ -25,6 +25,7 @@
     "test": "mocha -u bdd"
   },
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "co": "^4.6.0",
     "debug": "^2.2.0",
     "getconfig": "^3.0.0",
@@ -37,11 +38,11 @@
     "koa-router": "^7.0.0",
     "koa-static": "^1.5.2",
     "koa-views": "^5.0.1",
-    "runkoa": "^1.5.2",
     "lodash": "^4.13.1",
     "log4js": "^0.6.37",
     "moment": "^2.14.1",
     "mongoose": "^4.5.4",
+    "runkoa": "^1.5.2",
     "validator": "^5.4.0"
   },
   "devDependencies": {

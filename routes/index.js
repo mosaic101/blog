@@ -10,11 +10,13 @@ router.get('/', async (ctx, next) => {
   //});
 });
 
-//·用户
-import users from'./users';
+//用户
+import userRoute from './userRoute';
+//blog
+import blogRoute from './blogRoute';
 
-router.use('/users', users.routes());
-
+router.use('/user', userRoute.routes());
+router.use('/blog', blogRoute.routes());
 
 
 export default router;
