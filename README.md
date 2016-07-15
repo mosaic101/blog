@@ -7,13 +7,15 @@ Folder structure
 .
 ├── bin                         #启动脚本 node ./bin/run
 ├── config                      #config
-├── controllers                 #controller
-├── models                      #model
-├── routes                      #routes
+├── controllers                 #控制层
+├── examples                    #schema层
+├── filters                     #过滤层  //TODO
+├── models                      #model层
+├── routes                      #路由层
 ├── schema                      #schema
-├── services                    #services
-├── test                        #test
-└── utils                       #utils
+├── services                    #业务层
+├── test                        #单元测试
+└── utils                       #工具类
 
 ```
 
@@ -47,4 +49,5 @@ notice
 
 ps
 =====
-    觉得有帮助的给颗星，十分谢谢！
+    1.本人是个推崇全栈的程序猿，有兴趣的可以加扣扣群：45691985，互相交流学习！
+    2.觉得有帮助的顺手给颗星，十分谢谢！

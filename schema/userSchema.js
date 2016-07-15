@@ -29,7 +29,7 @@ var UserSchema  = new Schema({
     },
     state:{
         type:String,
-        default:"active"
+        default:'active'
     },
     location:{
         type:String,

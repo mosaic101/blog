@@ -9,7 +9,7 @@ var User = function(opt) {
 };
 
 /**
- * ¡¾Ìí¼ÓÓÃ»§¡¿
+ * ã€æ·»åŠ ç”¨æˆ·ã€‘
  * @param callback {function}
  */
 User.prototype.save = function (callback) {
@@ -18,7 +18,7 @@ User.prototype.save = function (callback) {
 };
 
 /**
- * ¡¾²éÑ¯µ¥¸öÓÃ»§¡¿
+ * ã€æŸ¥è¯¢å•ä¸ªç”¨æˆ·ã€‘
  * @param where {object}
  * @param callback {function}
  */
@@ -31,7 +31,7 @@ User.findOne = (where, callback) => {
 };
 
 /**
- * ¡¾ĞŞ¸ÄÓÃ»§ĞÅÏ¢¡¿
+ * ã€ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯ã€‘
  * @param where {object}
  * @param options {object}
  * @param callback {function}

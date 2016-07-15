@@ -23,9 +23,9 @@ var BlogSchema  = new Schema({
     },
     state:{
         type:String,
-        default:"published"
+        default:'published'
     },
-    //÷√∂• 0:≤ª÷√∂• 1:÷√∂•
+    //ÁΩÆÈ°∂ 0:‰∏çÁΩÆÈ°∂ 1:ÁΩÆÈ°∂
     top : {
         type:Number,
         required:true,
@@ -46,7 +46,7 @@ var BlogSchema  = new Schema({
     createdBy:{
         type:String,
         required:true,
-        ref: "Users"
+        ref: 'Users'
     },
     updatedAt:{
         type:Number,
@@ -55,7 +55,7 @@ var BlogSchema  = new Schema({
     updatedBy:{
         type:String,
         required:true,
-        ref: "Users"
+        ref: 'Users'
     }
 });
 
