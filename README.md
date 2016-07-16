@@ -8,8 +8,8 @@ Folder structure
 ├── bin                         #启动脚本 node ./bin/run
 ├── config                      #config
 ├── controllers                 #控制层
-├── examples                    #schema层
-├── filters                     #过滤层  //TODO
+├── examples                    #一些代码案例  //TODO
+├── filters                     #过滤层        //TODO
 ├── models                      #model层
 ├── routes                      #路由层
 ├── schema                      #schema
