@@ -9,7 +9,6 @@ Folder structure
 ├── config                      #config
 ├── controllers                 #控制层
 ├── examples                    #一些代码案例  //TODO
-├── filters                     #过滤层        //TODO
 ├── models                      #model层
 ├── routes                      #路由层
 ├── schema                      #schema
@@ -22,10 +21,9 @@ Folder structure
 Features
 =====
 * markdown格式支持        //TODO
-* highlight.js 代码高亮   //TODO
 * MVC代码风格
 * comment评论            //TODO
-* message board留言板
+* message board留言板    //TODO
 * Node 4.4.4
 * 启动 node ./bin/run
 * mongoose mongodb ORM module
