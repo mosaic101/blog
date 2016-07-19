@@ -1,8 +1,7 @@
 /**
  * Created by mosaic101 on 2016/7/14.
  */
-const UserSchema = require('../schema/UserSchema');
-const bcrypt = require('bcryptjs');
+const UserSchema = require('../schema/userSchema');
 
 var User = function(opt) {
     this.opt = opt;
@@ -17,17 +16,20 @@ User.prototype.save = function (callback) {
     action.save(callback);
 };
 
+
 /**
  * 【查询单个用户】
- * @param where {object}
- * @param callback {function}
+ * @param conditions {object}
  */
-User.findOne = (where, callback) => {
-    UserSchema
-        .findOne(where)
-        .exec((err, doc) => {
-            callback(err, doc);
+User.findOne = (conditions) => {
+    return new Promise((resolve,reject) => {
+        UserSchema.findOne(conditions).exec((err, doc) => {
+            if (err) return reject({err:err,message:'查询出错！',status:'-99'});
+            if (!doc) return reject({err:err,message:'没有此用户！',status:'-99'});
+            return resolve(doc);
         });
+    });
+
 };
 
 /**
@@ -49,4 +51,4 @@ User.update = (where, options, callback) => {
 
 
 
-module.exports = exports = User;
+export default User;

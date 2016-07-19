@@ -27,8 +27,8 @@ var getUserInfo = (token) => {
  * @param next
  */
 exports.checkToken = async (ctx,next) => {
-
     var token = ctx.header.authorization || null;
+    console.log('token~~~'+token);
     if (!token) {
         return ctx.body = {
             tag:'error',
@@ -38,15 +38,17 @@ exports.checkToken = async (ctx,next) => {
     }
     try {
         //解析token
-        var result = await getUserInfo(token);
+        let result = await getUserInfo(token);
         ctx.session.auth = result;
         next();
     }catch (err) {
         console.error('checkToken' + JSON.stringify(err));
         return ctx.body = {
             tag:'error',
-            status: err.status,
+            status: err.status || -99,
             message: err.message
         };
     }
 };
+
+

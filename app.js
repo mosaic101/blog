@@ -25,7 +25,7 @@ app.use(convert(json()));
 // app.use(convert(logger()));
 
 //设置一个签名 Cookie 的秘钥,也可以借助KeyGrip生成你想的一个实例
-app.keys = ['keys', 'blog-api'];
+app.keys = ['keys', 'koa2-blog'];
 //setting session
 app.use(session({
   store: redisStore({

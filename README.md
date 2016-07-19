@@ -36,8 +36,8 @@ Install
 =====
 
     1. npm install -g pm2
-    2. git clone https://github.com/mosaic101/blog-api.git
-    3. cd blog-api
+    2. git clone https://github.com/mosaic101/koa2-blog.git
+    3. cd koa2-blog
     4. npm install
     5. node ./bin/run
 

@@ -1,41 +1,65 @@
 /**
  * Created by mosaic101 on 2016/7/14.
  */
-var User = require('../models/userModel');
-var jwt = require('jwt-simple');
+const jwt = require('jwt-simple');
+const crypto = require('crypto');
+const User = require('../models/userModel');
 
 /**
- * @param user {object}
+ * 【register】
+ * @param options {object}
  */
-exports.login = (user) => {
-    var user = new User(user);
+exports.register = (options) => {
+    var user = new User(options);
     return new Promise((resolve, reject) => {
         user.save(function(err,result) {
             if (err) {
                 console.error(err);
-                return reject({err:err.errors,message:'添加用户失败！',status:-99 });
+                return reject({err:err.errors,message:err.message,status:-99 });
             }
-            //存入token
-            var token = jwt.encode(result,'BLOG_APi_LOGIN');
-            return resolve(token);
+            return resolve(result);
         });
     })
 };
 
 /**
+ * 【login】
  * @param user {object}
  */
-exports.update = (callback) => {
-    var where = {
-        name:'wujianjin'
+exports.login = (user) => {
+    let md5 = crypto.createHash('md5');
+    let password = md5.update(user.password).digest('hex');
+    let conditions = {
+        name: user.name
     };
-    var options = {
-        slug:'hello'
+    return new Promise((resolve, reject) => {
+        User.findOne(conditions).then((result) => {
+            //compare password
+            if (result.password != password) {
+                return reject({err:null,message:'密码错误！',status:'-99'});
+            }
+            //存入token
+            var token = jwt.encode(result,'BLOG_APi_LOGIN');
+            return resolve(token);
+        }).catch((err) => {
+            return reject(err);
+        }) ;
+    })
+};
+
+/**
+ * 【one】
+ * @param id {object}
+ */
+exports.one = (id) => {
+    let conditions = {
+        _id: id
     };
-    User.update(where,options,function(err,result) {
-        if (err) {
-            callback({err:err,message:'update失败！',state:'-99'});
-        }
-        callback(null,result);
-    });
+    return new Promise((resolve, reject) => {
+        User.findOne(conditions).then((result) => {
+            return resolve(result);
+        }).catch((err) => {
+            return reject(err);
+        }) ;
+    })
 };

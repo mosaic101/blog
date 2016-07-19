@@ -5,7 +5,9 @@
 const router = require('koa-router')();
 import blogController from '../controllers/blogController';
 
-//test
+//add
+router.post('/add',  blogController.add);
+//index
 router.get('/',  blogController.index);
 
 export default router;
