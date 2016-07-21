@@ -6,8 +6,7 @@ router.get('/', async (ctx, next) => {
   };
 
   ctx.body = 'this a index response!';
-  //await ctx.render('index', {
-  //});
+  await ctx.render('index', {});
 });
 
 //用户

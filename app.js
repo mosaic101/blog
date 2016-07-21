@@ -5,6 +5,8 @@ import Koa from 'koa';
 import convert from 'koa-convert';
 import json from 'koa-json';
 import Bodyparser from 'koa-bodyparser';
+import views from 'koa-views';
+import favicon from 'koa-favicon';
 import session from 'koa-generic-session';
 import mongoose from 'mongoose';
 import redisStore from 'koa-redis';
@@ -35,28 +37,26 @@ app.use(session({
 }));
 
 //static file
-//app.use(convert(require('koa-static')(__dirname + '/public')));
-
-//app.use(views(__dirname + '/views', {
-//  extension: 'jade'
-//}));
-
-
-// mongoose.connect('mongodb://dev:root@112.124.36.12:27017/atvillage', function(err) {
-// mongoose.connect('mongodb://localhost/blog', (err) => {
-//   if (err) throw err;
-//   console.log('connect mongodb`s database success!!!!');
-// });
+app.use(convert(require('koa-static')(__dirname + '/public')));
+//支持ejs模板
+app.use(views(__dirname + '/views', {
+  extension: 'ejs'
+}));
+app.use(favicon(__dirname, "public/favicon.ico"));
 
 //connect mongodb's database
-mongoose.connect('mongodb://' + config.host + '/blog');
-var db = mongoose.connection;
-//检测mongodb error
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-  // yay!
-  console.log('connect mongodb success!');
+mongoose.connect('mongodb://' + config.host + '/blog', (err) => {
+  if (err) throw err;
+  console.log('connect mongodb`s database success!!!!');
 });
+//另外一种写法
+// mongoose.connect('mongodb://' + config.host + '/blog');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function (callback) {
+//   // yay!
+//   console.log('connect mongodb success!');
+// });
 
 //TODO logger
 app.use(async (ctx, next) => {
@@ -67,6 +67,7 @@ app.use(async (ctx, next) => {
   await next();
   const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  //另外一种写法
   // return next().then(() => {
   //   const ms = new Date() - start;
   //   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
@@ -93,7 +94,6 @@ app.use(index.routes(),index.allowedMethods());
 //TODO response
 app.on('error', (err, ctx) => {
   console.error(err);
-  // Logger.error('server error', err, ctx);
   // logger.error('server error', err, ctx);
 });
 

@@ -1,4 +1,6 @@
-一个基于Nodejs koa2的博客api，使用MVC风格的代码架构;前端的项目还未启动，准备用vue
+一个基于Nodejs koa2的博客api，使用MVC风格的代码架构;
+保留了ejs渲染模板;
+前端的项目还未启动，准备用vue(前端不太熟，慢慢折腾吧！)
 
 Folder structure
 =====
@@ -14,7 +16,8 @@ Folder structure
 ├── schema                      #schema
 ├── services                    #业务层
 ├── test                        #单元测试
-└── utils                       #工具类
+├── utils                       #工具类
+└── views                       #视图层
 
 ```
 
@@ -28,11 +31,9 @@ Features
 * 启动 node ./bin/run
 * mongoose mongodb ORM module
 * 前台准备用vue.js       //TODO
-* 后台管理基于angular.js //TODO
 
 Install
 =====
-
     1. npm install -g pm2
     2. git clone https://github.com/mosaic101/koa2-blog.git
     3. cd koa2-blog
