@@ -1,6 +1,7 @@
 /**
  * Created by mosaic101 on 2016/7/11.
  */
+import path  from 'path';
 import Koa from 'koa';
 import convert from 'koa-convert';
 import json from 'koa-json';
@@ -12,8 +13,8 @@ import mongoose from 'mongoose';
 import redisStore from 'koa-redis';
 import config from 'getconfig';
 // import logger from 'koa-logger';
-var log4js = require('./utils/logger').log4js; //加载日志模块
-var Logger = require("./utils/logger").Logger("access");
+const log4js = require('./utils/logger').log4js; //加载日志模块
+const Logger = require("./utils/logger").Logger("access");
 
 //the index of router
 const index = require('./routes/index');
@@ -37,12 +38,12 @@ app.use(session({
 }));
 
 //static file
-app.use(convert(require('koa-static')(__dirname + '/public')));
+app.use(convert(require('koa-static')(path.join(__dirname + '/public'))));
 //支持ejs模板
 app.use(views(__dirname + '/views', {
   extension: 'ejs'
 }));
-app.use(favicon(__dirname, "public/favicon.ico"));
+app.use(favicon(path.join(__dirname, "public/favicon.ico")));
 
 //connect mongodb's database
 mongoose.connect('mongodb://' + config.host + '/blog', (err) => {
@@ -76,7 +77,7 @@ app.use(async (ctx, next) => {
   //404错误处理
   if (ctx.status == 404) {
     Logger.error(ctx.method, ctx.originalUrl, '404');
-    var err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     ctx.body = {
       tag: 'error',
