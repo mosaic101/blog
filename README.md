@@ -34,10 +34,10 @@ Features
 
 Install
 =====
-    1. npm install -g pm2
-    2. git clone https://github.com/mosaic101/koa2-blog.git
-    3. cd koa2-blog
-    4. npm install
+    1. git clone https://github.com/mosaic101/koa2-blog.git
+    2. cd koa2-blog
+    3. npm install
+    4. 在log下，新建app、access两个文件夹
     5. node ./bin/run
 
 notice

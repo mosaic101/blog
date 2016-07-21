@@ -43,7 +43,7 @@ app.use(convert(require('koa-static')(path.join(__dirname + '/public'))));
 app.use(views(__dirname + '/views', {
   extension: 'ejs'
 }));
-app.use(favicon(path.join(__dirname, "public/favicon.ico")));
+app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 //connect mongodb's database
 mongoose.connect('mongodb://' + config.host + '/blog', (err) => {
