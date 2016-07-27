@@ -1,6 +1,6 @@
 一个基于Nodejs koa2的博客api，使用MVC风格的代码架构;
-保留了ejs渲染模板;
-前端的项目还未启动，准备用vue(前端不太熟，慢慢折腾吧！)
+使用了ejs渲染模板;
+后期准备用vue(不太熟，慢慢折腾吧！)
 
 Folder structure
 =====
@@ -12,6 +12,7 @@ Folder structure
 ├── controllers                 #控制层
 ├── examples                    #一些代码案例  //TODO
 ├── models                      #model层
+├── public                      #静态资源
 ├── routes                      #路由层
 ├── schema                      #schema
 ├── services                    #业务层
@@ -39,6 +40,7 @@ Install
     3. npm install
     4. 在log下，新建app、access两个文件夹
     5. node ./bin/run
+    6. http://localhost:3000
 
 notice
 =====

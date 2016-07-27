@@ -7,7 +7,7 @@ router.get('/', async (ctx, next) => {
 
   ctx.body = 'this a index response!';
   await ctx.render('index', {
-    title:'koa2 title',
+    title:'吴建金的博客',
     name:'world'
   });
 });

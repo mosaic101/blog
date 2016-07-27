@@ -1,0 +1,31 @@
+{
+  "name": "koa2-blog",
+  "version": "1.0.0",
+  "description": "Just a blog server api with koa@2",
+  "author": "mosaic101",
+  "homepage": "http://www.wujianjin.com",
+  "private": false,
+  "keywords": [
+    "node",
+    "blog",
+    "koa2",
+    "mongoDB",
+    "es6"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mosaic101/koa2-blog.git"
+  },
+  "bugs": "https://github.com/mosaic101/koa2-blog/issues",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./bin/run",
+    "koa": "runkoa ./bin/www",
+    "pm2": "pm2 start ./bin/run",
+    "test": "mocha -u bdd"
+  },
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootstrap": "^3.3.7"
+  }
+}
