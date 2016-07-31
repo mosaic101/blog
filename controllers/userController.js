@@ -77,7 +77,7 @@ exports.login = async (ctx) => {
  * @param next
  */
 exports.one = async (ctx) => {
-    var _id = ctx.request.query.id || '5788a1302f67fa603bf427dc';
+    var _id = ctx.request.query.id || '579dee11391e4d639e76e4c6';
     if (!_id) {
         return ctx.body = {
             tag:'error',
@@ -86,12 +86,12 @@ exports.one = async (ctx) => {
         };
     }
     try {
-        var result = await userService.one(_id);
+        let conditions = {_id: _id};
+        await userService.one(conditions);
         ctx.body = {
             tag:'success',
             status:1,
-            message:'查询成功!',
-            token:result
+            message:'查询成功!'
         };
     }catch (err) {
         Logger.error('one error', err);

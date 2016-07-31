@@ -4,8 +4,8 @@
     "host": "127.0.0.1",
     "port": 6379,
     "db": 13,
-    "key": ".blog-api",
-    "secret": "blog-api"
+    "key": ".koa2-blog",
+    "secret": "koa2-blog"
   },
   "numCPUs": 1,
   "port": 3000

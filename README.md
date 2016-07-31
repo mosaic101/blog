@@ -42,13 +42,13 @@ Install
     5. node ./bin/run
     6. http://localhost:3000
 
-notice
+Notice
 =====
     1.需要本地安装redis，并启动
     2.依赖Node.js 4.0+ (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
     3.koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
 
-ps
+Ps
 =====
     1.本人是个推崇全栈的程序猿，有兴趣的可以加扣扣群：45691985，互相交流学习！
     2.觉得有帮助的顺手给颗星，十分谢谢！

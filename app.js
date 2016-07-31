@@ -46,12 +46,15 @@ app.use(views(__dirname + '/views', {
 app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 //connect mongodb's database
-mongoose.connect('mongodb://' + config.host + '/blog', (err) => {
+let DATABASE_URL = 'mongodb://' + config.host + '/blog';
+//use native promises Instead of mpromise //mongoose return mpromise
+mongoose.Promise = global.Promise;
+mongoose.connect(DATABASE_URL, (err) => {
   if (err) throw err;
   console.log('connect mongodb`s database success!!!!');
 });
-//另外一种写法
-// mongoose.connect('mongodb://' + config.host + '/blog');
+//another form of writing
+// mongoose.connect(DATABASE_URL);
 // var db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'connection error:'));
 // db.once('open', function (callback) {
@@ -68,13 +71,13 @@ app.use(async (ctx, next) => {
   await next();
   const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-  //另外一种写法
+  //another form of writing
   // return next().then(() => {
   //   const ms = new Date() - start;
   //   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
   // });
 
-  //404错误处理
+  //404 error handler
   if (ctx.status == 404) {
     Logger.error(ctx.method, ctx.originalUrl, '404');
     const err = new Error('Not Found');

@@ -10,16 +10,7 @@ const User = require('../models/userModel');
  * @param options {object}
  */
 exports.register = (options) => {
-    var user = new User(options);
-    return new Promise((resolve, reject) => {
-        user.save(function(err,result) {
-            if (err) {
-                console.error(err);
-                return reject({err:err.errors,message:err.message,status:-99 });
-            }
-            return resolve(result);
-        });
-    })
+    return User.save(options);
 };
 
 /**
@@ -28,38 +19,39 @@ exports.register = (options) => {
  */
 exports.login = (user) => {
     let md5 = crypto.createHash('md5');
-    let password = md5.update(user.password).digest('hex');
+    //let password = md5.update(user.password).digest('hex');
     let conditions = {
-        name: user.name
+        _id:'579dec06dff2a33389a6678b'
     };
     return new Promise((resolve, reject) => {
         User.findOne(conditions).then((result) => {
             //compare password
-            if (result.password != password) {
-                return reject({err:null,message:'密码错误！',status:'-99'});
-            }
+            //if (result.password != password) {
+            //    return reject({err:null,message:'密码错误！',status:'-99'});
+            //}
             //存入token
             var token = jwt.encode(result,'BLOG_APi_LOGIN');
             return resolve(token);
         }).catch((err) => {
             return reject(err);
-        }) ;
+        });
     })
 };
 
 /**
  * 【one】
- * @param id {object}
+ * @param conditions {object}
  */
-exports.one = (id) => {
-    let conditions = {
-        _id: id
-    };
+exports.one = (conditions) => {
     return new Promise((resolve, reject) => {
-        User.findOne(conditions).then((result) => {
+        try {
+            let result = User.findOne(conditions);
+            if (!result) {
+                return reject({err:err,message:'没有此用户！',status:'-99'});
+            }
             return resolve(result);
-        }).catch((err) => {
-            return reject(err);
-        }) ;
+        }catch (err) {
+            return reject({err:err,message:'查询出错！',status:'-99'});
+        }
     })
 };

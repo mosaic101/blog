@@ -5,9 +5,9 @@
 const router = require('koa-router')();
 import blogController from '../controllers/blogController';
 
-//add
+//添加
 router.post('/add',  blogController.add);
-//index
-router.get('/',  blogController.index);
+//列表
+router.get('/list',  blogController.list);
 
 export default router;
