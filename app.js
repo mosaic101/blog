@@ -17,7 +17,7 @@ const log4js = require('./utils/logger').log4js; //加载日志模块
 const Logger = require("./utils/logger").Logger("access");
 
 //the index of router
-const index = require('./routes/index');
+const router = require('./routes/index');
 
 const app = new Koa();
 const bodyparser = new Bodyparser();
@@ -91,9 +91,7 @@ app.use(async (ctx, next) => {
 });
 
 
-app.use(index.routes(),index.allowedMethods());
-//router.use('/', index.routes(), index.allowedMethods());
-//router.use('/users', users.routes(), users.allowedMethods());
+app.use(router.routes(),router.allowedMethods());
 
 //TODO response
 app.on('error', (err, ctx) => {

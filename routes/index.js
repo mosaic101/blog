@@ -17,8 +17,8 @@ import userRoute from './userRoute';
 //blog
 import blogRoute from './blogRoute';
 
-router.use('/user', userRoute.routes());
-router.use('/blog', blogRoute.routes());
+router.use('/user', userRoute.routes(),userRoute.allowedMethods());
+router.use('/blog', blogRoute.routes(),blogRoute.allowedMethods());
 
 
 export default router;
