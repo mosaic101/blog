@@ -41,15 +41,14 @@ Install
     3. npm install
     4. node ./bin/run
     5. http://localhost:3000
+    6. 需要本地安装redis，并启动
 
 Notice
 =====
-    1. 需要本地安装redis，并启动
-    2. 在log下，新建app、access两个文件夹
-    3. 依赖Node.js 4.0+ (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
-    4. koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
+    1. 依赖Node.js 4.0+ (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
+    2. koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
 
 Ps
 =====
-    1. 本人是个推崇全栈的程序猿，有兴趣的可以加扣扣群：45691985，互相交流学习！
+    1. 本人是个推崇js全栈的程序猿，有兴趣的可以加扣扣群：45691985，互相交流学习！
     2. 觉得有帮助的顺手给颗星，十分谢谢！
