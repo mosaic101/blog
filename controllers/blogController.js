@@ -39,6 +39,34 @@ exports.add = async(ctx,next) => {
 };
 
 /**
+ * 【recommend】
+ * @condition limit:6,order by 阅读量倒叙
+ * @param ctx
+ * @param next
+ */
+exports.recommend = async (ctx,next) => {
+    let conditions = {"state": "published"};
+    let fields = {_id:0};
+    let options = {skip : 0, limit : 6};
+    try {
+        var result = await blogService.list(conditions, fields, options);
+        ctx.body = {
+            tag:'success',
+            status:1,
+            message:'查询成功!',
+            data:result
+        };
+    }catch (err) {
+        Logger.error('list error', err);
+        ctx.body = {
+            tag:'error',
+            status:err.status,
+            message:err.message
+        };
+    }
+};
+
+/**
  * 【list】
  * @param ctx
  * @param next

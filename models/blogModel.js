@@ -1,8 +1,8 @@
 /**
  * Created by mosaic101 on 2016/7/19.
  */
+const Promise = require('bluebird');
 const blogModel = require('../schema/blogSchema');
-
 
 /**
  * 【添加blog】

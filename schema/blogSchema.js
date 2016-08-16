@@ -5,58 +5,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var BlogSchema  = new Schema({
-    title:{
-        type:String,
-        required: true
-    },
-    slug:{
-        type:String,
-        required: true
-    },
-    markdown:{
-        type:String,
-        required: true
-    },
-    html:{
-        type:String,
-        required:false
-    },
-    state:{
-        type:String,
-        default:'published'
-    },
+    title: {type: String, required: true},
+    //别名
+    slug: {type: String, required: true},
+    //文章内容
+    markdown: {type: String, required: true},
+    //TODO
+    html: {type: String, required: false},
+    //状态
+    state: {type: String, default: 'published'},
     //置顶 0:不置顶 1:置顶
-    top : {
-        type:Number,
-        required:true,
-        default: 0
-    },
-    metaTitle:{
-        type:String,
-        required:false
-    },
-    metaDesc:{
-        type:String,
-        required:false
-    },
-    createdAt:{
-        type:Date,
-        default:Date.now
-    },
-    createdBy:{
-        type:String,
-        required:true,
-        ref: 'Users'
-    },
-    updatedAt:{
-        type:Number,
-        default:Date.now
-    },
-    updatedBy:{
-        type:String,
-        required:true,
-        ref: 'Users'
-    }
+    top: {type: Number, required: true, default: 0},
+    //meta
+    metaTitle: {type: String, required: false},
+    //meta
+    metaDesc: {type: String, required: false},
+    //创建时间
+    createdAt: {type: Date, default: Date.now},
+    //创建人
+    createdBy: {type: String, required: true, ref: 'Users'},
+    //修改时间
+    updatedAt: {type: Number, default: Date.now},
+    //修改人
+    updatedBy: {type: String, required: true, ref: 'Users'}
 });
 
 module.exports = mongoose.model('Blogs', BlogSchema);
