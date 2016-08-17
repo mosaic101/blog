@@ -16,6 +16,9 @@ import config from 'getconfig';
 const log4js = require('./utils/logger').log4js; //加载日志模块
 const Logger = require("./utils/logger").Logger("access");
 
+//将node原生Promise替换成bluebird
+global.Promise = require('bluebird');
+
 //the index of router
 const router = require('./routes/index');
 

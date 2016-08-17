@@ -45,9 +45,9 @@ exports.add = async(ctx,next) => {
  * @param next
  */
 exports.recommend = async (ctx,next) => {
-    let conditions = {"state": "published"};
-    let fields = {_id:0};
-    let options = {skip : 0, limit : 6};
+    let conditions = {state: 'published'};
+    let fields = {_id: 0};
+    let options = {sort: { createdAt: -1 }, skip : 0, limit : 6};
     try {
         var result = await blogService.list(conditions, fields, options);
         ctx.body = {

@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var BlogSchema  = new Schema({
+    //TODO 模拟mysql自增id
+    f_id: {type: Number, required: true},
+    //title
     title: {type: String, required: true},
     //别名
     slug: {type: String, required: true},
@@ -14,8 +17,10 @@ var BlogSchema  = new Schema({
     html: {type: String, required: false},
     //状态
     state: {type: String, default: 'published'},
+    //阅读量
+    readCount: {type: Number, default: 0},
     //置顶 0:不置顶 1:置顶
-    top: {type: Number, required: true, default: 0},
+    top: {type: Number, default: 0},
     //meta
     metaTitle: {type: String, required: false},
     //meta
