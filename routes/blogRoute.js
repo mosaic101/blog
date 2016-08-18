@@ -7,8 +7,6 @@ import blogController from '../controllers/blogController';
 
 //添加
 router.post('/add', blogController.add);
-//首页推荐列表
-router.get('/recommend', blogController.recommend);
 //列表
 router.get('/list', blogController.list);
 

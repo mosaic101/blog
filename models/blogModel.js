@@ -28,7 +28,7 @@ exports.save = function (blog) {
  */
 exports.find = function (conditions, fields, options) {
     //exec 返回promise实例
-    return blogModel.find(conditions, fields, options).exec();
+    //return blogModel.find(conditions, fields, options).exec();
     //TODO　error handle
     //var promise = Model.find().exec();
     //promise.then(
@@ -39,5 +39,47 @@ exports.find = function (conditions, fields, options) {
     //        // on reject
     //    }
     //);
+
+    //VillagesModel.find(criteria)
+    //    .populate({path:"createBy",select:"email"})
+    //    .sort({createAt : -1})
+    //    .skip((page.curPage-1)*page.pageSize)
+    //    .limit(page.pageSize)
+    //    .exec(function(err2, docs) {
+    //        var result = {};
+    //        result.villages = docs;
+    //        result.page = page;
+    //
+    //        callback(err2, result);
+    //    });
 };
 
+/**
+ *
+ * @param where
+ * @param offset
+ * @param limit
+ * @returns {Array|{index: number, input: string}}
+ */
+exports.findAll = function (where,offset, limit) {
+    //exec 返回promise实例
+    return blogModel.find(where)
+        .sort({
+            createAt : -1
+        })
+        .skip(offset)
+        .limit(limit).exec();
+
+    //VillagesModel.find(criteria)
+    //    .populate({path:"createBy",select:"email"})
+    //    .sort({createAt : -1})
+    //    .skip((page.curPage-1)*page.pageSize)
+    //    .limit(page.pageSize)
+    //    .exec(function(err2, docs) {
+    //        var result = {};
+    //        result.villages = docs;
+    //        result.page = page;
+    //
+    //        callback(err2, result);
+    //    });
+};

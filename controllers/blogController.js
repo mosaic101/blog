@@ -13,9 +13,11 @@ const Logger = require("../utils/logger").Logger("blogController");
  */
 exports.add = async(ctx,next) => {
     var blog = {
-        title:'test 1',
-        slug:'test 2',
+        title:'test  test test test',
+        slug:'test 2 test 2 test 2',
         markdown:'<div> helloWorld </div>',
+        type:'个人博客',
+        imgUrl: ['images/01.jpg','images/02.jpg','images/03.jpg'],
         html:'',
         state:'published',
         createdBy:'wujianjin',
@@ -73,8 +75,8 @@ exports.recommend = async (ctx,next) => {
  */
 exports.list = async (ctx,next) => {
     let conditions = {"state": "published"};
-    let fields = {_id:0};
-    let options = {skip : 0, limit : 2};
+    let fields = {};
+    let options = {sort: { createdAt: -1 }, skip : 0, limit : 6};
     try {
         var result = await blogService.list(conditions, fields, options);
         ctx.body = {

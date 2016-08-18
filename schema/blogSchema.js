@@ -5,15 +5,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var BlogSchema  = new Schema({
-    //自定义序列号 依次递增
-    fid: {type: Number, required: true},
+    //TODO 自定义序列号 依次递增
+    //fid: {type: Number, required: true},
     //title
     title: {type: String, required: true},
     //别名
     slug: {type: String, required: true},
     //文章内容
     markdown: {type: String, required: true},
-    //TODO
+    //分类
+    type: {type: String, default: 'default'},
+    //html
     html: {type: String, required: false},
     //状态
     state: {type: String, default: 'published'},
@@ -21,6 +23,8 @@ var BlogSchema  = new Schema({
     readCount: {type: Number, default: 0},
     //置顶 0:不置顶 1:置顶
     top: {type: Number, default: 0},
+    //img数组
+    imgUrl: {type: Array, required: false},
     //meta
     metaTitle: {type: String, required: false},
     //meta
@@ -36,12 +40,12 @@ var BlogSchema  = new Schema({
 });
 
 
-BlogSchema.methods.incrementId = function(tablename, callback) {
-    BlogSchema.findAndModify({"tablename":tablename}, [], {$inc:{'fid':1}}, {new:true, upsert:true}, function(err, result) {
-        if (err) return callback(err);
-        callback(null, result.fid);
-    });
-};
+//BlogSchema.methods.incrementId = function(tablename, callback) {
+//    BlogSchema.findAndModify({"tablename":tablename}, [], {$inc:{'fid':1}}, {new:true, upsert:true}, function(err, result) {
+//        if (err) return callback(err);
+//        callback(null, result.fid);
+//    });
+//};
 
 module.exports = mongoose.model('Blogs', BlogSchema);
 
