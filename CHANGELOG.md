@@ -16,3 +16,8 @@
 2.更新schema说明
 3.更新README.md
 4.用bluebird替换原生Promise
+
+2016-8-18
+=====
+1.更新blogSchema，增加几个字段
+2.model层不需要抽象化，须修改
