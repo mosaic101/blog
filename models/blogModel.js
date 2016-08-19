@@ -21,12 +21,22 @@ exports.save = function (blog) {
 };
 
 /**
+ * 【查询单个blog】
+ * @param id {object} id
+ */
+exports.findById = function (id) {
+    //exec 返回promise实例
+    return blogModel.findById(id).exec();
+
+};
+
+/**
  * 【查询所有blog】
  * @param conditions {object} 查询条件
  * @param fields     {object} 过滤字段
  * @param options    {object} 其他操作
  */
-exports.find = function (conditions, fields, options) {
+exports.findAll = function (conditions, fields, options) {
     //exec 返回promise实例
     //return blogModel.find(conditions, fields, options).exec();
     //TODO　error handle
@@ -61,7 +71,7 @@ exports.find = function (conditions, fields, options) {
  * @param limit
  * @returns {Array|{index: number, input: string}}
  */
-exports.findAll = function (where,offset, limit) {
+exports.find = function (where,offset, limit) {
     //exec 返回promise实例
     return blogModel.find(where)
         .sort({

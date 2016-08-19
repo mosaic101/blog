@@ -9,8 +9,9 @@ const Logger = require("../utils/logger").Logger("userController");
 /**
  * 【register】
  * @param ctx
+ * @param next
  */
-exports.register = async (ctx) => {
+exports.register = async (ctx,next) => {
     let user = {
         name:'wujianjin',
         slug: 'mosaic',
@@ -40,8 +41,9 @@ exports.register = async (ctx) => {
 /**
  * 【login】
  * @param ctx
+ * @param next
  */
-exports.login = async (ctx) => {
+exports.login = async (ctx,next) => {
     var user = ctx.request.body || {
             name:'wujianjin',
             password:'123456'
@@ -76,7 +78,7 @@ exports.login = async (ctx) => {
  * @param ctx
  * @param next
  */
-exports.one = async (ctx) => {
+exports.one = async (ctx,next) => {
     var _id = ctx.request.query.id || '579dee11391e4d639e76e4c6';
     if (!_id) {
         return ctx.body = {

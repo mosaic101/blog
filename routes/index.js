@@ -1,6 +1,7 @@
 var router = require('koa-router')();
 var fs = require('fs');
 var markdown = require('markdown').markdown;
+
 router.get('/', async (ctx, next) => {
    //ctx.state = {
    //  title: 'koa2 title'
@@ -13,7 +14,7 @@ router.get('/', async (ctx, next) => {
 
 function getChangeLog () {
   return new Promise((resolve,reject) => {
-    fs.readFile("./CHANGELOG.md", "utf8", function (error, data) {
+    fs.readFile("./CHANGELOG.md", "utf8",  (error, data) => {
       if (error) {
         return reject(error);
       }

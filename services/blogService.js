@@ -12,11 +12,29 @@ exports.add = (blog) => {
 };
 
 /**
- * 【list】
- * @param conditions {object}
- * @param fields {object}
- * @param options {object}
+ * 【commend】
+ * @param where {object}
+ * @param offset {number}
+ * @param limit {number}
  */
-exports.list = (conditions, fields, options) => {
-    return Blog.find(conditions, fields, options);
+exports.commend = (where, offset, limit) => {
+    return Blog.find(where, offset, limit);
+};
+
+/**
+ * 【list】
+ * @param where {object}
+ * @param offset {number}
+ * @param limit {number}
+ */
+exports.list = (where, offset, limit) => {
+    return Blog.find(where, offset, limit);
+};
+
+/**
+ * 【one】
+ * @param id {string}
+ */
+exports.one = (id) => {
+    return Blog.findById(id);
 };

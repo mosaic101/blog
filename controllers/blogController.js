@@ -41,17 +41,18 @@ exports.add = async(ctx,next) => {
 };
 
 /**
- * 【recommend】
- * @condition limit:6,order by 阅读量倒叙
+ * 【commend】
  * @param ctx
  * @param next
  */
-exports.recommend = async (ctx,next) => {
-    let conditions = {state: 'published'};
-    let fields = {_id: 0};
-    let options = {sort: { createdAt: -1 }, skip : 0, limit : 6};
+exports.commend = async (ctx,next) => {
+    let offset = ctx.params.offset || 0;
+    let limit = ctx.params.limit || 10;
+    let where = {
+        state: 'published'
+    };
     try {
-        var result = await blogService.list(conditions, fields, options);
+        var result = await blogService.commend(where, offset, limit);
         ctx.body = {
             tag:'success',
             status:1,
@@ -74,11 +75,45 @@ exports.recommend = async (ctx,next) => {
  * @param next
  */
 exports.list = async (ctx,next) => {
-    let conditions = {"state": "published"};
-    let fields = {};
-    let options = {sort: { createdAt: -1 }, skip : 0, limit : 6};
+    let offset = ctx.params.offset || 0;
+    let limit = ctx.params.limit || 10;
+    let where = {
+        state: 'published'
+    };
     try {
-        var result = await blogService.list(conditions, fields, options);
+        var result = await blogService.list(where, offset, limit);
+        ctx.body = {
+            tag:'success',
+            status:1,
+            message:'查询成功!',
+            data:result
+        };
+    }catch (err) {
+        Logger.error('list error', err);
+        ctx.body = {
+            tag:'error',
+            status:err.status,
+            message:err.message
+        };
+    }
+};
+
+/**
+ * 【one】
+ * @param ctx
+ * @param next
+ */
+exports.one = async (ctx,next) => {
+    let id = ctx.params.id;
+    if (!id || !_.isString(id)) {
+        ctx.body = {
+            tag:'error',
+            status:-1,
+            message:'参数错误!'
+        };
+    }
+    try {
+        var result = await blogService.one(id);
         ctx.body = {
             tag:'success',
             status:1,
