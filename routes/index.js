@@ -5,24 +5,25 @@ router.get('/', async (ctx, next) => {
    //ctx.state = {
    //  title: 'koa2 title'
    //};
-
-  ctx.body = 'this a index response!';
   await ctx.render('index', {
     title:'吴建金的博客',
     name:'world'
   });
 });
 
+function getChangeLog () {
+  return new Promise((resolve,reject) => {
+    fs.readFile("./CHANGELOG.md", "utf8", function (error, data) {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(markdown.toHTML(data));
+    });
+  })
+}
 //查看更新log
-router.get('/change', (ctx, next) => {
-  fs.readFile("./CHANGELOG.md", "utf8", function (error, data) {
-    if (error) {
-      console.log(error);
-      //return next(error);
-    } else {
-      ctx.body = markdown.toHTML(data);
-    }
-  });
+router.get('/change', async (ctx, next) => {
+  ctx.body = await getChangeLog();
 });
 
 //用户
