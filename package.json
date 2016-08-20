@@ -27,7 +27,6 @@
   "dependencies": {
     "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.1",
-    "co": "^4.6.0",
     "debug": "^2.2.0",
     "ejs": "^2.4.2",
     "getconfig": "^3.0.0",

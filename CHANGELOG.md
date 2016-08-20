@@ -22,3 +22,8 @@
 ### 1.更新blogSchema，增加几个字段
 ### 2.model层不需要抽象化，须修改
 ### 3.http://localhost:3000/change，可以查看CHANGELOG.md
+
+2016-8-20
+=========
+### 1.删除无用包
+### 2.更新blog功能

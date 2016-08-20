@@ -47,10 +47,8 @@ exports.add = async(ctx,next) => {
  */
 exports.commend = async (ctx,next) => {
     let offset = ctx.params.offset || 0;
-    let limit = ctx.params.limit || 10;
-    let where = {
-        state: 'published'
-    };
+    let limit = ctx.params.limit || 6;
+    let where = {state: 'published'};
     try {
         var result = await blogService.commend(where, offset, limit);
         ctx.body = {
@@ -77,9 +75,7 @@ exports.commend = async (ctx,next) => {
 exports.list = async (ctx,next) => {
     let offset = ctx.params.offset || 0;
     let limit = ctx.params.limit || 10;
-    let where = {
-        createdAt: {$lte: '2016-08-18T14:56:49.877Z'}
-    };
+    let where = {state: 'published'};
     try {
         var result = await blogService.list(where, offset, limit);
         ctx.body = {
@@ -121,7 +117,7 @@ exports.one = async (ctx,next) => {
             data:result
         };
     }catch (err) {
-        Logger.error('list error', err);
+        Logger.error('one error', err);
         ctx.body = {
             tag:'error',
             status:err.status,

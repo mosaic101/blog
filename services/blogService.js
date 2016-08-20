@@ -33,7 +33,7 @@ exports.list = (where, offset, limit) => {
 
 /**
  * 【one】
- * @param id {string}
+ * @param id {string}   
  */
 exports.one = (id) => {
     return Blog.findById(id);
