@@ -60,7 +60,7 @@ exports.commend = async (ctx,next) => {
             data:result
         };
     }catch (err) {
-        Logger.error('list error', err);
+        Logger.error('commend error', err);
         ctx.body = {
             tag:'error',
             status:err.status,
@@ -78,7 +78,7 @@ exports.list = async (ctx,next) => {
     let offset = ctx.params.offset || 0;
     let limit = ctx.params.limit || 10;
     let where = {
-        state: 'published'
+        createdAt: {$lte: '2016-08-18T14:56:49.877Z'}
     };
     try {
         var result = await blogService.list(where, offset, limit);

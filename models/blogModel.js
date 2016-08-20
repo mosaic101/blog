@@ -80,7 +80,7 @@ exports.find = function (where,offset, limit) {
         .skip(offset)
         .limit(limit).exec();
 
-    //VillagesModel.find(criteria)
+    //blogModel.find(criteria)
     //    .populate({path:"createBy",select:"email"})
     //    .sort({createAt : -1})
     //    .skip((page.curPage-1)*page.pageSize)
