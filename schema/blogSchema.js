@@ -5,8 +5,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var BlogSchema  = new Schema({
-    //TODO 自定义序列号 依次递增
-    //fid: {type: Number, required: true},
+    //自定义序列号 依次递增
+    fid: {type: Number, required: true},
     //title
     title: {type: String, required: true},
     //别名

@@ -28,7 +28,7 @@ exports.commend = (where, offset, limit) => {
  * @param limit {number}
  */
 exports.list = (where, offset, limit) => {
-    return Blog.find(where, offset, limit);
+    return Blog.findAllAndCount(where, offset, limit);
 };
 
 /**

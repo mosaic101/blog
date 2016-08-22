@@ -11,9 +11,9 @@ const UserModel = require('../schema/UserSchema');
 exports.save = function (user) {
     var action = new UserModel(user);
     return new Promise((resolve, reject) => {
-        action.save(function (err, result) {
+        action.save((err, result) => {
             if (err) {
-                return reject({err:err.errors,message:err.message,status:-99});
+                return reject({message:'添加用户失败', err:err, status:-99});
             }
             return resolve(result);
         });
@@ -23,17 +23,16 @@ exports.save = function (user) {
 
 /**
  * 【查询单个用户】
- * @param conditions {object} 查询条件
- * @param fields     {object} 过滤字段
- * @param options    {object} 其他操作
+ * @param where {object} 查询条件
  */
-exports.findOne = (conditions,fields,options) => {
-    //return UserModel.findOne(conditions,fields,options).exec();
+exports.findOne = (where) => {
     return new Promise((resolve,reject) => {
-        UserModel.findOne(conditions,fields,options).exec((err, doc) => {
-            if (err) return reject({err:err,message:'查询出错！',status:'-99'});
-            if (!doc) return reject({err:err,message:'没有此用户！',status:'-99'});
-            return resolve(doc);
+        UserModel.findOne(where).exec((err, result) => {
+            if (err)
+                return reject({message:'查询出错！', err:err, status:-99});
+            if (!result)
+                return reject({message:'没有此用户！', err:err, status:-99});
+            return resolve(result);
         });
     });
 
@@ -51,7 +50,6 @@ exports.update = (where, options, callback) => {
             return callback(err);
         }
         callback(null, numberAffected);
-
     })
 };
 

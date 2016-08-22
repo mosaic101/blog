@@ -74,7 +74,7 @@ exports.commend = async (ctx,next) => {
  */
 exports.list = async (ctx,next) => {
     let offset = ctx.params.offset || 0;
-    let limit = ctx.params.limit || 10;
+    let limit = ctx.params.limit || 6;
     let where = {state: 'published'};
     try {
         var result = await blogService.list(where, offset, limit);
