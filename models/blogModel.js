@@ -59,48 +59,21 @@ exports.findAll = function (conditions, fields, options) {
     //        // on reject
     //    }
     //);
-
-    //VillagesModel.find(criteria)
-    //    .populate({path:"createBy",select:"email"})
-    //    .sort({createAt : -1})
-    //    .skip((page.curPage-1)*page.pageSize)
-    //    .limit(page.pageSize)
-    //    .exec(function(err2, docs) {
-    //        var result = {};
-    //        result.villages = docs;
-    //        result.page = page;
-    //
-    //        callback(err2, result);
-    //    });
 };
 
 /**
- *
+ *【查询所有blog】
  * @param where
  * @param offset
  * @param limit
  * @returns {Array|{index: number, input: string}}
  */
 exports.find = function (where, offset, limit) {
-    let conditions = where;
-    let fields = {};
-    let options = {
-        sort: {createdAt: -1},
-        skip : offset,
-        limit : limit
-    };
-    //exec 返回promise实例
-    return blogModel.find(conditions, fields, options).exec();
-    // blogModel.find(criteria)
-    //    .populate({path:"createBy",select:"email"})
-    //    .sort({createAt : -1})
-    //    .skip((page.curPage-1)*page.pageSize)
-    //    .limit(page.pageSize)
-    //    .exec(function(err2, docs) {
-    //        var result = {};
-    //        result.villages = docs;
-    //        result.page = page;
-    //
-    //        callback(err2, result);
-    //    });
+    return blogModel.find(where)
+        .sort({createdAt : -1})
+        .skip(offset)
+        .limit(limit)
+        .exec();
+    //另外的写法 exec 返回promise实例
+    //return blogModel.find(conditions, fields, options).exec();
 };
