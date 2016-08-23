@@ -35,6 +35,7 @@ exports.save = function (blog) {
 
 /**
  * 【根据id查询单个blog】
+ * @intro 每次点击 readCount + 1
  * @param id {object} id
  */
 exports.findById = function (id) {
@@ -69,8 +70,6 @@ exports.findOne = function (where) {
             return resolve(result);
         });
     });
-
-
 };
 
 /**
