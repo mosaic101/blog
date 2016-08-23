@@ -23,8 +23,8 @@ var BlogSchema  = new Schema({
     readCount: {type: Number, default: 0},
     //置顶 0:不置顶 1:置顶
     top: {type: Number, default: 0},
-    //img数组
-    imgUrl: {type: Array, required: false},
+    //images数组
+    images: {type: Array, required: false},
     //meta
     metaTitle: {type: String, required: false},
     //meta

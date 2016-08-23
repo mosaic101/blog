@@ -17,7 +17,7 @@ exports.add = async(ctx,next) => {
         slug:'test 2 test 2 test 2',
         markdown:'<div> helloWorld </div>',
         type:'个人博客',
-        imgUrl: ['images/01.jpg','images/02.jpg','images/03.jpg'],
+        images: ['images/01.jpg','images/02.jpg','images/03.jpg'],
         html:'',
         state:'published',
         createdBy:'wujianjin',

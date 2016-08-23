@@ -32,7 +32,7 @@ Features
 * message board留言板    //TODO
 * 支持async/await 函数 (Babel required)
 * Node 4.4.4
-* 启动 node ./bin/run
+* 启动 npm start
 * mongoose mongodb ORM module
 
 Install
@@ -40,7 +40,7 @@ Install
     1. git clone https://github.com/mosaic101/koa2-blog.git
     2. cd koa2-blog
     3. npm install
-    4. node ./bin/run
+    4. npm start
     5. http://localhost:3000
     6. 需要本地安装redis，并启动
 

@@ -3,6 +3,8 @@
  */
 const Blog = require('../models/blogModel');
 
+var IMG_URL = 'images/background.jpg';
+
 /**
  * 【add】
  * @param blog {object}
@@ -18,7 +20,7 @@ exports.add = (blog) => {
  * @param limit {number}
  */
 exports.commend = (where, offset, limit) => {
-    return Blog.find(where, offset, limit);
+    return Blog.findAll(where, offset, limit);
 };
 
 /**
