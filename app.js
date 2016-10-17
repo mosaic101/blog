@@ -14,7 +14,7 @@ import redisStore from 'koa-redis';
 import config from 'getconfig';
 // import logger from 'koa-logger';
 const log4js = require('./utils/logger').log4js; //加载日志模块
-const Logger = require("./utils/logger").Logger("access");
+const Logger = require("./utils/logger").Logger("app");
 
 //将node原生Promise替换成bluebird
 global.Promise = require('bluebird');
@@ -73,13 +73,14 @@ app.use(async (ctx, next) => {
   const start = new Date();
   await next();
   const ms = new Date() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  if (ctx.status == 200) {
+    Logger.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  }
   //another form of writing
   // return next().then(() => {
   //   const ms = new Date() - start;
   //   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
   // });
-
   //404 error handler
   if (ctx.status == 404) {
     Logger.error(ctx.method, ctx.originalUrl, '404');

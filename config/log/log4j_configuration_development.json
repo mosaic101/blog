@@ -1,5 +1,5 @@
 {
-  "replaceConsole": true,
+  "replaceConsole": false,
   "appenders": [
     {
       "type": "console"
