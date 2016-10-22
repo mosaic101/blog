@@ -28,12 +28,12 @@ router.get('/change', async (ctx, next) => {
 });
 
 //用户
-import userRoute from './userRoute';
+import user from './user';
 //blog
-import blogRoute from './blogRoute';
+import blog from './blog';
 
-router.use('/user', userRoute.routes(),userRoute.allowedMethods());
-router.use('/blog', blogRoute.routes(),blogRoute.allowedMethods());
+router.use('/user', user.routes(),user.allowedMethods());
+router.use('/blog', blog.routes(),blog.allowedMethods());
 
 
 export default router;

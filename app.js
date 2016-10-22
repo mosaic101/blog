@@ -69,7 +69,6 @@ mongoose.connect(DATABASE_URL, (err) => {
 app.use(async (ctx, next) => {
   //将logger方法绑到ctx上
   // ctx.logger = logger;
-  console.log('...');
   const start = new Date();
   await next();
   const ms = new Date() - start;
@@ -81,6 +80,7 @@ app.use(async (ctx, next) => {
   //   const ms = new Date() - start;
   //   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
   // });
+  console.log(ctx.status == 404);
   //404 error handler
   if (ctx.status == 404) {
     Logger.error(ctx.method, ctx.originalUrl, '404');
@@ -88,8 +88,19 @@ app.use(async (ctx, next) => {
     err.status = 404;
     ctx.body = {
       tag: 'error',
-      status:404,
-      message: 'this url don`t exist !!!'
+      status: err.status,
+      message: err.message,
+      stack: err.stack
+    };
+  }else {
+    Logger.error(ctx.method, ctx.originalUrl, '500');
+    const err = new Error('System Error');
+    err.status = 500;
+    ctx.body = {
+      tag: "error",
+      status: err.status,
+      message: err.message,
+      stack: err.stack
     };
   }
 });
@@ -99,7 +110,7 @@ app.use(router.routes(),router.allowedMethods());
 
 //TODO response
 app.on('error', (err, ctx) => {
-  console.error(err);
+  console.error(1111,err);
   // logger.error('server error', err, ctx);
 });
 

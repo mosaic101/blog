@@ -4,13 +4,13 @@
  */
 const router = require('koa-router')();
 // import authorization from '../utils/authorization';
-import userController from '../controllers/userController';
+import user from '../controllers/user';
 
 //注册
-router.post('/register', userController.register);
+router.post('/register', user.register);
 //登录
-router.post('/login', userController.login);
+router.post('/login', user.login);
 //查询单个用户
-router.get('/one', userController.one);
+router.get('/one', user.one);
 
 export default router;
