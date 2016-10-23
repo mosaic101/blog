@@ -46,12 +46,11 @@ Install
 
 Notice
 =====
-    1. 依赖Node.js 4.0+ (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
+    1. 依赖Node.js 4.X (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
     2. koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
     3. async/await 函数是es7的特性,async函数里使用await可以做到和yield类似的效果，但await只能接promise对象
     4. 用bluebird替换原生Promise,blurbird的性能是V8里内置的Promise 3倍左右bluebird 的优化方式见 https://github.com/petkaantonov/bluebird/wiki/Optimization-killers ）。
 
 Ps
 =====
-    1. 本人是个推崇js全栈的程序猿，有兴趣的可以加扣扣群：45691985，互相交流学习！
-    2. 觉得有帮助的顺手给颗星，十分谢谢！
+    1. 觉得有帮助的顺手给颗星，十分谢谢！

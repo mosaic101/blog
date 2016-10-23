@@ -12,12 +12,17 @@ import session from 'koa-generic-session';
 import mongoose from 'mongoose';
 import redisStore from 'koa-redis';
 import config from 'getconfig';
+import onerror from 'koa-onerror';
 // import logger from 'koa-logger';
 const log4js = require('./utils/logger').log4js; //加载日志模块
 const Logger = require("./utils/logger").Logger("app");
 
 //将node原生Promise替换成bluebird
 global.Promise = require('bluebird');
+//use native promises Instead of mpromise //mongoose return mpromise
+mongoose.Promise = global.Promise;
+//connect mongodb's database
+let DATABASE_URL = 'mongodb://' + config.host + '/blog';
 
 //the index of router
 const router = require('./routes/index');
@@ -34,84 +39,53 @@ app.use(convert(json()));
 app.keys = ['keys', 'koa2-blog'];
 //setting session
 app.use(session({
-  store: redisStore({
-    host: config.redis.host,
-    port: config.redis.port
-  })
+    store: redisStore({
+        host: config.redis.host,
+        port: config.redis.port
+    })
 }));
 
 //static file
 app.use(convert(require('koa-static')(path.join(__dirname + '/public'))));
 //支持ejs模板
 app.use(views(__dirname + '/views', {
-  extension: 'ejs'
+    extension: 'ejs'
 }));
 app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
-//connect mongodb's database
-let DATABASE_URL = 'mongodb://' + config.host + '/blog';
-//use native promises Instead of mpromise //mongoose return mpromise
-mongoose.Promise = global.Promise;
+//connect mongodb
 mongoose.connect(DATABASE_URL, (err) => {
-  if (err) throw err;
-  console.log('connect mongodb`s database success!!!!');
+    if (err) return console.error.bind(console, 'connection error:');
+    console.log('connect mongodb`s database success!!!!');
 });
-//another form of writing
-// mongoose.connect(DATABASE_URL);
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function (callback) {
-//   // yay!
-//   console.log('connect mongodb success!');
-// });
 
-//TODO logger
+// 500 error
+onerror(app);
+
+//logger
 app.use(async (ctx, next) => {
-  //将logger方法绑到ctx上
-  // ctx.logger = logger;
-  const start = new Date();
-  await next();
-  const ms = new Date() - start;
-  if (ctx.status == 200) {
+    const start = new Date();
+    await next();
+    const ms = new Date() - start;
     Logger.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
-  }
-  //another form of writing
-  // return next().then(() => {
-  //   const ms = new Date() - start;
-  //   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-  // });
-  console.log(ctx.status == 404);
-  //404 error handler
-  if (ctx.status == 404) {
-    Logger.error(ctx.method, ctx.originalUrl, '404');
-    const err = new Error('Not Found');
-    err.status = 404;
-    ctx.body = {
-      tag: 'error',
-      status: err.status,
-      message: err.message,
-      stack: err.stack
-    };
-  }else {
-    Logger.error(ctx.method, ctx.originalUrl, '500');
-    const err = new Error('System Error');
-    err.status = 500;
-    ctx.body = {
-      tag: "error",
-      status: err.status,
-      message: err.message,
-      stack: err.stack
-    };
-  }
+    //404 error handler
+    if (ctx.status == 404) {
+        const err = new Error('Not Found');
+        err.status = 404;
+        ctx.body = {
+            tag: 'error',
+            status: err.status,
+            message: err.message,
+            stack: err.stack
+        };
+    }
 });
-
 
 app.use(router.routes(),router.allowedMethods());
 
-//TODO response
+//error logger
 app.on('error', (err, ctx) => {
-  console.error(1111,err);
-  // logger.error('server error', err, ctx);
+    Logger.error('server error', err, ctx);
 });
 
 
