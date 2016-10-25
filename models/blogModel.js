@@ -43,7 +43,7 @@ exports.findById = function (id) {
     return new Promise((resolve,reject) => {
         blogModel.findById(id).exec((err, doc) => {
             if (err)
-                return reject({message:'查询博客失败！', err:err, status:-99});
+                return reject(Error('查询博客失败！'));
             if (!doc)
                 return reject({message:'没有该博客！', err:err, status:-99});
             doc.readCount ++;
