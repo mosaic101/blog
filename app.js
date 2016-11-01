@@ -13,9 +13,7 @@ import mongoose from 'mongoose';
 import redisStore from 'koa-redis';
 import config from 'getconfig';
 import onerror from 'koa-onerror';
-// import logger from 'koa-logger';
-const log4js = require('./utils/logger').log4js; //加载日志模块
-const Logger = require("./utils/logger").Logger("app");
+import logger from 'koa-logger';
 
 //将node原生Promise替换成bluebird
 global.Promise = require('bluebird');
@@ -33,7 +31,7 @@ const bodyparser = new Bodyparser();
 // middlewares
 app.use(convert(bodyparser));
 app.use(convert(json()));
-// app.use(convert(logger()));
+app.use(convert(logger()));
 
 //设置一个签名 Cookie 的秘钥,也可以借助KeyGrip生成你想的一个实例
 app.keys = ['keys', 'koa2-blog'];
@@ -55,7 +53,7 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 //connect mongodb
 mongoose.connect(DATABASE_URL, (err) => {
-    if (err) return console.error.bind(console, 'connection error:');
+    if (err) throw err;
     console.log('connect mongodb`s database success!!!!');
 });
 
@@ -67,7 +65,7 @@ app.use(async (ctx, next) => {
     const start = new Date();
     await next();
     const ms = new Date() - start;
-    Logger.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    console.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
     //404 error handler
     if (ctx.status == 404) {
         const err = new Error('Not Found');
@@ -85,7 +83,7 @@ app.use(router.routes(),router.allowedMethods());
 
 //error logger
 app.on('error', (err, ctx) => {
-    Logger.error('server error', err, ctx);
+    console.error('server error', err, ctx);
 });
 
 

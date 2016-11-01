@@ -10,7 +10,6 @@ Folder structure
 .
 ├── bin                         #启动脚本 node ./bin/run
 ├── config                      #config
-├── controllers                 #控制层
 ├── examples                    #一些代码案例  //TODO
 ├── models                      #model层
 ├── public                      #静态资源

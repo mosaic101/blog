@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, width=device-width, initial-scale=1, user-scalable=no"/>
-        <title><%= title %></title>
+<%- include ../base/head.ejs %>
+<%- include ../base/css.ejs %>
+<%- include ../base/container.ejs %>
+
+
+<%- include ../base/javascript.ejs %>
+<script type="text/javascript" charset="utf-8" src="/javascript/user/view.js"></script>
+<%- include ../base/footer.ejs %>
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="/assets/css/app.css" rel="stylesheet" type="text/css" />
         <script src="/assets/js/jquery.min.js"></script>
@@ -63,7 +65,7 @@
     <body id="page-body">
         <!--header-->
         <div class="blog-header">
-            <header class="main-header" style="background-image: url(/assets/images/background.jpg);">
+            <header class="main-header" style="background-image: url(/images/background.jpg);">
                 <!--<nav class="main-nav overlay clearfix">-->
                     <!--<a class="blog-logo" href="http://www.wujianjin.com"><img src="/content/images/2016/02/xiaopangzi.jpg" alt="吴建金的博客"></a>-->
                     <!--<a class="menu-button icon-menu" href="#"><span class="word">菜单</span></a>-->
