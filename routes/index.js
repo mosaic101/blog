@@ -6,7 +6,7 @@ router.get('/', async (ctx, next) => {
    //ctx.state = {
    //  title: 'koa2 title'
    //};
-  await ctx.render('index', {
+  await ctx.render('index/index', {
     title:'吴建金的博客',
     name:'world'
   });
