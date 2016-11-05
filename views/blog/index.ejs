@@ -11,19 +11,6 @@
             <h2>
                 <b>文章</b>推荐
             </h2>
-            <div class="blog" ng-repeat = "o in blogList track by $index">
-                <figure><img ng-src="{{o.imgUrl[0]}}"></figure>
-                <ul>
-                    <h3><a ng-href="/#/blog/one/{{o._id}}">{{o.title}}</a></h3>
-                    <p>{{o.title}}</p>
-                    <p class="autor">
-                        <span class="lm f_l"><a href="/">个人博客</a></span>
-                        <span class="dtime f_l">{{o.createdAt}}</span>
-                        <span class="viewnum f_r">浏览（<a href="/">{{o.readCount}}</a>）</span>
-                        <!--<span class="pingl f_r">评论（<a href="/">30</a>）</span>-->
-                    </p>
-                </ul>
-            </div>
             <div class="blog">
                 <figure><img src="images/02.jpg"></figure>
                 <ul>

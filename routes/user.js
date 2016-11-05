@@ -1,6 +1,6 @@
 /**
  * Created by mosaic101 on 2016/7/14.
- * intro: router of user
+ * intro: routes of user
  */
 const router = require('koa-router')();
 const _ = require('lodash');

@@ -1,16 +1,11 @@
-var router = require('koa-router')();
-var fs = require('fs');
-var markdown = require('markdown').markdown;
+/**
+ * Created by mosaic101 on 2016/7/14.
+ * intro: routes of index
+ */
+const router = require('koa-router')();
+const fs = require('fs');
+const {markdown} = require('markdown');
 
-router.get('/', async (ctx, next) => {
-   //ctx.state = {
-   //  title: 'koa2 title'
-   //};
-  await ctx.render('index/index', {
-    title:'吴建金的博客',
-    name:'world'
-  });
-});
 
 function getChangeLog () {
   return new Promise((resolve,reject) => {
@@ -22,18 +17,18 @@ function getChangeLog () {
     });
   })
 }
+
 //查看更新log
 router.get('/change', async (ctx, next) => {
   ctx.body = await getChangeLog();
 });
 
-//用户
-const user = require('./user');
-//blog
 const blog = require('./blog');
+const user = require('./user');
 
-router.use('/user', user.routes(),user.allowedMethods());
 router.use('/blog', blog.routes(),blog.allowedMethods());
+router.use('/user', user.routes(),user.allowedMethods());
+
 
 
 export default router;

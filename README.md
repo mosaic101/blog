@@ -1,4 +1,4 @@
-一个基于Nodejs koa2的博客api，使用MVC风格的代码架构;
+一个基于Nodejs koa2的博客;
 使用了ejs渲染模板，目前只有首页;
 这个blog目前只是个基本雏形，完善中 ^_^！
 
@@ -10,7 +10,8 @@ Folder structure
 .
 ├── bin                         #启动脚本 node ./bin/run
 ├── config                      #config
-├── examples                    #一些代码案例  //TODO
+├── demo                        #demo
+├── log                         #操作日志
 ├── models                      #model层
 ├── public                      #静态资源
 ├── routes                      #路由层
@@ -25,7 +26,6 @@ Folder structure
 Features
 =====
 * markdown格式支持        //TODO
-* MVC代码风格
 * comment评论            //TODO
 * message board留言板    //TODO
 * 支持async/await 函数 (Babel required)

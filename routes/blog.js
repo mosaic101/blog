@@ -1,10 +1,21 @@
 /**
  * Created by mosaic101 on 2016/7/14.
- * intro: router of blog
+ * intro: routes of blog
  */
 const router = require('koa-router')();
 const _ = require('lodash');
 const blogService = require('../services/blogService');
+
+
+router.get('/', async (ctx, next) => {
+    //ctx.state = {
+    //  title: 'koa2 title'
+    //};
+    await ctx.render('blog/index', {
+        title:'吴建金的博客',
+        name:'world'
+    });
+});
 
 //添加
 router.post('/add', async(ctx,next) => {

@@ -9,8 +9,8 @@ import Bodyparser from 'koa-bodyparser';
 import views from 'koa-views';
 import favicon from 'koa-favicon';
 import session from 'koa-generic-session';
-import mongoose from 'mongoose';
 import redisStore from 'koa-redis';
+import mongoose from 'mongoose';
 import config from 'getconfig';
 import onerror from 'koa-onerror';
 import logger from 'koa-logger';
@@ -22,20 +22,21 @@ mongoose.Promise = global.Promise;
 //connect mongodb's database
 let DATABASE_URL = 'mongodb://' + config.host + '/blog';
 
-//the index of router
-const router = require('./routes/index');
+//the index of routes
+const index = require('./routes/index');
 
 const app = new Koa();
 const bodyparser = new Bodyparser();
 
+//设置一个签名 Cookie 的秘钥,也可以借助KeyGrip生成你想的一个实例
+app.keys = ['keys', 'koa2-blog'];
+
 // middlewares
+app.use(convert(require('koa-static')(path.join(__dirname + '/public'))));
 app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
-
-//设置一个签名 Cookie 的秘钥,也可以借助KeyGrip生成你想的一个实例
-app.keys = ['keys', 'koa2-blog'];
-//setting session
+//settings session
 app.use(session({
     store: redisStore({
         host: config.redis.host,
@@ -43,15 +44,14 @@ app.use(session({
     })
 }));
 
-//static file
-app.use(convert(require('koa-static')(path.join(__dirname + '/public'))));
-//支持ejs模板
+//ejs engine
 app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }));
+
 app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
-//connect mongodb
+//mongodb
 mongoose.connect(DATABASE_URL, (err) => {
     if (err) throw err;
     console.log('connect mongodb`s database success!!!!');
@@ -79,7 +79,8 @@ app.use(async (ctx, next) => {
     }
 });
 
-app.use(router.routes(),router.allowedMethods());
+//routes
+app.use(index.routes(),index.allowedMethods());
 
 //error logger
 app.on('error', (err, ctx) => {

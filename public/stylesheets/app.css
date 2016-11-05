@@ -216,39 +216,39 @@ nav {
 }
 
 .gzwm .rss {
-    background: url(../../images/ico_04_1.jpg) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_04_1.jpg) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .rss:hover {
     color: #000;
-    background: url(../../images/ico_04.png) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_04.png) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .xlwb {
-    background: url(../../images/ico_05_1.jpg) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_05_1.jpg) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .xlwb:hover {
     color: #000;
-    background: url(../../images/ico_05.png) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_05.png) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .txwb {
-    background: url(../../images/ico_06_1.jpg) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_06_1.jpg) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .txwb:hover {
     color: #000;
-    background: url(../../images/ico_06.png) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_06.png) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .wx {
-    background: url(../../images/ico_07_1.jpg) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_07_1.jpg) no-repeat scroll 0 0 transparent;
 }
 
 .gzwm .wx:hover {
     color: #000;
-    background: url(../../images/ico_07.png) no-repeat scroll 0 0 transparent;
+    background: url(../images/ico_07.png) no-repeat scroll 0 0 transparent;
 }
 
 /*标签云*/
