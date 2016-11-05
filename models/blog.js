@@ -2,7 +2,7 @@
  * Created by mosaic101 on 2016/7/19.
  */
 const Promise = require('bluebird');
-const blogModel = require('../schema/blogSchema');
+const {blogModel} = require('../schema/blog');
 
 /**
  * 【添加blog】
@@ -22,7 +22,6 @@ exports.save = function (blog) {
                 //第一个fid
                 action.fid = 1;
             }
-            console.log('New blog with fid ' + (action.fid));
             action.save((err, result) => {
                 if (err) {
                     return reject({message:'添加博客失败！', err:err, status:-99});

@@ -1,7 +1,7 @@
 /**
  * Created by mosaic101 on 2016/7/19.
  */
-const Blog = require('../models/blogModel');
+const Blog = require('../models/blog');
 
 var IMG_URL = 'images/background.jpg';
 

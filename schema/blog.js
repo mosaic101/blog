@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var BlogSchema  = new Schema({
+var blogSchema  = new Schema({
     //自定义序列号 依次递增
     fid: {type: Number, required: true},
     //title
@@ -40,13 +40,6 @@ var BlogSchema  = new Schema({
 });
 
 
-//BlogSchema.methods.incrementId = function(tablename, callback) {
-//    BlogSchema.findAndModify({"tablename":tablename}, [], {$inc:{'fid':1}}, {new:true, upsert:true}, function(err, result) {
-//        if (err) return callback(err);
-//        callback(null, result.fid);
-//    });
-//};
-
-module.exports = mongoose.model('Blogs', BlogSchema);
+exports.blogModel = mongoose.model('Blogs', blogSchema);
 
 

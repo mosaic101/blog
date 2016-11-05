@@ -29,7 +29,7 @@ Features
 * comment评论            //TODO
 * message board留言板    //TODO
 * 支持async/await 函数 (Babel required)
-* Node 4.4.4
+* Node 4.X+
 * 启动 npm start
 * mongoose mongodb ORM module
 

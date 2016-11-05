@@ -2,7 +2,7 @@
  * Created by mosaic101 on 2016/7/14.
  */
 const Promise = require('bluebird');
-const UserModel = require('../schema/UserSchema');
+const {UserModel} = require('../schema/user');
 
 /**
  * 【添加用户】

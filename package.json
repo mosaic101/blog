@@ -1,7 +1,7 @@
 {
   "name": "koa2-blog",
   "version": "1.0.0",
-  "description": "Just a blog server api with koa@2",
+  "description": "Just a blog with koa@2",
   "author": "mosaic101",
   "homepage": "http://www.wujianjin.com",
   "private": false,
@@ -25,7 +25,6 @@
     "test": "mocha -u bdd"
   },
   "dependencies": {
-    "bcryptjs": "^2.3.0",
     "bluebird": "^3.4.1",
     "debug": "^2.2.0",
     "ejs": "^2.4.2",
@@ -48,12 +47,14 @@
     "markdown": "^0.5.0",
     "moment": "^2.14.1",
     "mongoose": "^4.5.4",
-    "runkoa": "^1.5.2",
+    "runkoa": "^1.5.6",
     "validator": "^5.4.0"
   },
   "devDependencies": {
+    "eslint": "^3.9.1",
     "mocha": "^2.5.3",
     "nodemon": "^1.9.2",
+    "pm2": "^2.0.19",
     "should": "^9.0.2",
     "supertest": "^1.2.0"
   }

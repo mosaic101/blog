@@ -3,7 +3,7 @@
  */
 const jwt = require('jwt-simple');
 const crypto = require('crypto');
-const User = require('../models/userModel');
+const User = require('../models/user');
 
 /**
  * 【register】

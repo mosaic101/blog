@@ -28,9 +28,9 @@ router.get('/change', async (ctx, next) => {
 });
 
 //用户
-import user from './user';
+const user = require('./user');
 //blog
-import blog from './blog';
+const blog = require('./blog');
 
 router.use('/user', user.routes(),user.allowedMethods());
 router.use('/blog', blog.routes(),blog.allowedMethods());
