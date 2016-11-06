@@ -3,11 +3,6 @@
 /*}*/
 @charset "UTF-8";
 /*css reset*/
-* {
-    padding: 0;
-    margin: 0;
-}
-
 body {
     font: 12px/1.5 'Microsoft Yahei', 'Simsun';
     color: #666666;
