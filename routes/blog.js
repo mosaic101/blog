@@ -7,11 +7,11 @@ const _ = require('lodash');
 const blogService = require('../services/blogService');
 
 
-router.get('/', async (ctx, next) => {
+router.get('/', async(ctx, next) => {
     //ctx.state = {
     //  title: 'koa2 title'
     //};
-    await ctx.render('blog/index', {
+    await ctx.render('blog/list', {
         title:'吴建金的博客',
         name:'world'
     });
