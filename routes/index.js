@@ -7,21 +7,27 @@ const fs = require('fs');
 const {markdown} = require('markdown');
 
 
-function getChangeLog () {
-  return new Promise((resolve,reject) => {
-    fs.readFile("./CHANGELOG.md", "utf8",  (error, data) => {
-      if (error) {
-        return reject(error);
-      }
-      return resolve(markdown.toHTML(data));
-    });
-  })
-}
+//index of home
+router.get('/', async (ctx, next) => {
+    ctx.redirect('/blog');
+});
 
 //查看更新log
 router.get('/change', async (ctx, next) => {
-  ctx.body = await getChangeLog();
+    let changeLog = function () {
+        return new Promise((resolve,reject) => {
+            fs.readFile("./CHANGELOG.md", "utf8",  (error, data) => {
+                if (error) {
+                    return reject(error);
+                }
+                return resolve(markdown.toHTML(data));
+            });
+        })
+    };
+    ctx.body = await changeLog();
 });
+
+
 
 const blog = require('./blog');
 const user = require('./user');

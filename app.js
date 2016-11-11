@@ -60,6 +60,10 @@ mongoose.connect(DATABASE_URL, (err) => {
 // 500 error
 onerror(app);
 
+
+//routes
+app.use(index.routes(),index.allowedMethods());
+
 //logger
 app.use(async (ctx, next) => {
     const start = new Date();
@@ -78,9 +82,6 @@ app.use(async (ctx, next) => {
         };
     }
 });
-
-//routes
-app.use(index.routes(),index.allowedMethods());
 
 //error logger
 app.on('error', (err, ctx) => {

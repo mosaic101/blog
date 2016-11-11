@@ -20,7 +20,7 @@
     "no-process-exit": 2,
     "no-restricted-modules": [2, "domian"],
     "no-sync": 2,
-    "block-spacing": [2, "always"],
+    "block-spacing": [4, "always"],
     "max-len": [2, 120],
     "quotes": [2, "single"],
     "guard-for-in": 2
