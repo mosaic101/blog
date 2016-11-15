@@ -1,9 +1,10 @@
 /**
  * Created by mosaic101 on 2016/7/19.
  */
-const Blog = require('../models/blog');
+const models  = require('../models');
+const Blog    = models.Blog;
 
-var IMG_URL = 'images/background.jpg';
+const IMG_URL = 'images/background.jpg';
 
 /**
  * 【add】
@@ -30,7 +31,27 @@ exports.commend = (where, offset, limit) => {
  * @param limit {number}
  */
 exports.list = (where, offset, limit) => {
-    return Blog.findAllAndCount(where, offset, limit);
+    return new Promise((resolve,reject) => {
+        Blog.count(where, (err, count) => {
+            console.info(1,count)
+            if(err) {
+                return reject(Error('获取博客数量失败!'));
+            }
+            Blog.find(where)
+                .sort({createdAt : -1})
+                .skip(offset)
+                .limit(limit).exec((err, docs) => {
+                if(err) {
+                    return reject(Error('查询博客失败!'));
+                }
+                console.info(2,docs)
+                return resolve({
+                    count: count,
+                    rows: docs
+                });
+            });
+        });
+    });
 };
 
 /**

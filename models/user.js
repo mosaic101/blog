@@ -1,57 +1,32 @@
 /**
+ * TODO 用户表
  * Created by mosaic101 on 2016/7/14.
  */
-const Promise = require('bluebird');
-const {UserModel} = require('../schema/user');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-/**
- * 【添加用户】
- * @param user {object}
- */
-exports.save = function (user) {
-    var action = new UserModel(user);
-    return new Promise((resolve, reject) => {
-        action.save((err, result) => {
-            if (err) {
-                return reject({message:'添加用户失败', err:err, status:-99});
-            }
-            return resolve(result);
-        });
-    })
-};
+var UserSchema  = new Schema({
+    name: {type: String, required: true},
+    slug: {type: String, required: false},
+    email: {type: String, required: true},
+    password: {type: String, required: true, trim: true},
+    headImg: {type: String, required: false},
+    state: {type: String, default: 'active'},
+    location: {type: String, required: false},
+    lastLogin: {type: Date, default: Date.now},
+    metaTitle: {type: String, required: false},
+    metaDesc: {type: String, required: false},
+    createdAt: {type: Date, default: Date.now},
+    updatedAt: {type: Number, default: Date.now}
+    //todo 用户权限类型
+    //permission: {
+    //    type:Object,
+    //    required: false
+    //},
+    //role: {type: String,required: false, ref: 'Roles'}
+});
 
 
-/**
- * 【查询单个用户】
- * @param where {object} 查询条件
- */
-exports.findOne = (where) => {
-    return new Promise((resolve,reject) => {
-        UserModel.findOne(where).exec((err, result) => {
-            if (err)
-                return reject({message:'查询出错！', err:err, status:-99});
-            if (!result)
-                return reject({message:'没有此用户！', err:err, status:-99});
-            return resolve(result);
-        });
-    });
-
-};
-
-/**
- * 【修改用户信息】
- * @param where {object}
- * @param options {object}
- * @param callback {function}
- */
-exports.update = (where, options, callback) => {
-    UserModel.update(where, options,{multi: true},(err, numberAffected, raw) => {
-        if(err) {
-            return callback(err);
-        }
-        callback(null, numberAffected);
-    })
-};
-
+mongoose.model('User', UserSchema);
 
 

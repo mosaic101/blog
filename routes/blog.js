@@ -7,18 +7,29 @@ const _ = require('lodash');
 const blogService = require('../services/blogService');
 
 
-router.get('/', async(ctx, next) => {
-    //ctx.state = {
-    //  title: 'koa2 title'
-    //};
-    await ctx.render('blog/list', {
-        title:'吴建金的博客',
-        name:'world'
-    });
+//首页
+router.get('/', async (ctx, next) => {
+    let offset = ctx.params.offset || 0;
+    let limit = ctx.params.limit || 10;
+    let where = {state: 'published'};
+    try {
+        var blog = await blogService.list(where, offset, limit);
+        await ctx.render('blog/list', {
+            title:'吴建金的博客',
+            blog: blog
+        });
+    }catch (err) {
+        ctx.body = {
+            tag:'error',
+            status:err.status,
+            message:err.message
+        };
+    }
+
 });
 
 //添加
-router.post('/add', async(ctx,next) => {
+router.post('/add', async (ctx,next) => {
     var blog = {
         title:'test  test test test',
         slug:'test 2 test 2 test 2',
@@ -71,7 +82,7 @@ router.get('/commend',async (ctx,next) => {
 //列表
 router.get('/list', async (ctx,next) => {
     let offset = ctx.params.offset || 0;
-    let limit = ctx.params.limit || 6;
+    let limit = ctx.params.limit || 11;
     let where = {state: 'published'};
     try {
         var result = await blogService.list(where, offset, limit);

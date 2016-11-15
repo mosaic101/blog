@@ -1,26 +1,21 @@
 /**
  * Created by mosaic101 on 2016/7/11.
  */
-import path  from 'path';
-import Koa from 'koa';
-import convert from 'koa-convert';
-import json from 'koa-json';
-import Bodyparser from 'koa-bodyparser';
-import views from 'koa-views';
-import favicon from 'koa-favicon';
-import session from 'koa-generic-session';
-import redisStore from 'koa-redis';
-import mongoose from 'mongoose';
-import config from 'getconfig';
-import onerror from 'koa-onerror';
-import logger from 'koa-logger';
+const path  = require('path');
+const Koa = require('koa');
+const convert = require('koa-convert');
+const json = require('koa-json');
+const Bodyparser = require('koa-bodyparser');
+const views = require('koa-views');
+const favicon = require('koa-favicon');
+const session = require('koa-generic-session');
+const redisStore = require('koa-redis');
+const config = require('getconfig');
+const onerror = require('koa-onerror');
+const logger = require('koa-logger');
 
 //将node原生Promise替换成bluebird
 global.Promise = require('bluebird');
-//use native promises Instead of mpromise //mongoose return mpromise
-mongoose.Promise = global.Promise;
-//connect mongodb's database
-let DATABASE_URL = 'mongodb://' + config.host + '/blog';
 
 //the index of routes
 const index = require('./routes/index');
@@ -51,15 +46,8 @@ app.use(views(__dirname + '/views', {
 
 app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
-//mongodb
-mongoose.connect(DATABASE_URL, (err) => {
-    if (err) throw err;
-    console.log('connect mongodb`s database success!!!!');
-});
-
 // 500 error
 onerror(app);
-
 
 //routes
 app.use(index.routes(),index.allowedMethods());
