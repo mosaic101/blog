@@ -1,5 +1,5 @@
 /**
- * Created by mosaic101 on 2016/11/15.
+ * Created by mosaic101 on 2016/11/16.
  */
 const mongoose = require('mongoose');
 const config = require('getconfig');
@@ -17,9 +17,6 @@ mongoose.connect(DATABASE_URL, {server: {poolSize: 20}}, (err) => {
     }
 });
 
-// models
-require('./blog');
-require('./user');
 
-exports.User = mongoose.model('User');
-exports.Blog = mongoose.model('Blog');
+exports.Blog =  require('./blog');
+exports.User = require('./user');

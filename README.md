@@ -15,6 +15,7 @@ Folder structure
 ├── models                      #model层
 ├── public                      #静态资源
 ├── routes                      #路由层
+├── schema                      #schema层
 ├── services                    #业务层
 ├── test                        #单元测试
 ├── utils                       #工具类

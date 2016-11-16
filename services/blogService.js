@@ -1,10 +1,9 @@
 /**
  * Created by mosaic101 on 2016/7/19.
  */
-const models  = require('../models');
-const Blog    = models.Blog;
-
-const IMG_URL = 'images/background.jpg';
+const _ = require('lodash');
+const moment = require('moment');
+const Blog = require('../models/blog');
 
 /**
  * 【add】
@@ -30,28 +29,12 @@ exports.commend = (where, offset, limit) => {
  * @param offset {number}
  * @param limit {number}
  */
-exports.list = (where, offset, limit) => {
-    return new Promise((resolve,reject) => {
-        Blog.count(where, (err, count) => {
-            console.info(1,count)
-            if(err) {
-                return reject(Error('获取博客数量失败!'));
-            }
-            Blog.find(where)
-                .sort({createdAt : -1})
-                .skip(offset)
-                .limit(limit).exec((err, docs) => {
-                if(err) {
-                    return reject(Error('查询博客失败!'));
-                }
-                console.info(2,docs)
-                return resolve({
-                    count: count,
-                    rows: docs
-                });
-            });
-        });
+exports.list = async (where, offset, limit) => {
+    let data = await Blog.findAll(where, offset, limit);
+    _.forEach(data,(value,key) => {
+        value.createdAt = moment(value.createdAt).format('YYYY-MM-DD HH:mm:ss');
     });
+    return data;
 };
 
 /**

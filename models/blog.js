@@ -1,45 +1,122 @@
 /**
- * Created by mosaic101 on 2016/7/14.
+ * Created by mosaic101 on 2016/7/19.
  */
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Promise = require('bluebird');
+const {Blog} = require('../schema/index');
 
-var BlogSchema  = new Schema({
-    //自定义序列号 依次递增
-    fid: {type: Number, required: true},
-    //title
-    title: {type: String, required: true},
-    //别名
-    slug: {type: String, required: true},
-    //文章内容
-    markdown: {type: String, required: true},
-    //分类
-    type: {type: String, default: 'default'},
-    //html
-    html: {type: String, required: false},
-    //状态
-    state: {type: String, default: 'published'},
-    //阅读量
-    readCount: {type: Number, default: 0},
-    //置顶 0:不置顶 1:置顶
-    top: {type: Number, default: 0},
-    //images数组
-    images: {type: Array, required: false},
-    //meta
-    metaTitle: {type: String, required: false},
-    //meta
-    metaDesc: {type: String, required: false},
-    //创建时间
-    createdAt: {type: Date, default: Date.now},
-    //创建人
-    createdBy: {type: String, required: true, ref: 'Users'},
-    //修改时间
-    updatedAt: {type: Number, default: Date.now},
-    //修改人
-    updatedBy: {type: String, required: true, ref: 'Users'}
-});
+/**
+ * 【添加blog】
+ * @param options {object}
+ */
+exports.save = function (options) {
+    var action = new Blog(options);
+    return new Promise((resolve, reject) => {
+        //添加fid
+        Blog.find().sort({fid:-1}).limit(1).exec((err, doc) => {
+            if(err) {
+                return reject({message:'查询fid失败！', err:err, status:-99});
+            }
+            if(doc && doc.length>0 && typeof doc[0].fid=='number') {
+                action.fid = (doc[0].fid + 1);
+            } else {
+                //第一个fid
+                action.fid = 1;
+            }
+            action.save((err, result) => {
+                if (err) {
+                    return reject({message:'添加博客失败！', err:err, status:-99});
+                }
+                return resolve(result);
+            });
+        });
+    })
+};
 
+/**
+ * 【根据id查询单个blog】
+ * @intro 每次点击 readCount + 1
+ * @param id {object} id
+ */
+exports.findById = function (id) {
+    //exec 可以返回promise实例
+    return new Promise((resolve,reject) => {
+        Blog.findById(id).exec((err, doc) => {
+            if (err)
+                return reject(Error('查询博客失败!'));
+            if (!doc)
+                return reject(Error('没有该博客!'));
+            doc.readCount ++;
+            doc.save((err, result) => {
+                if (err) {
+                    return reject(Error('保存博客失败!'));
+                }
+                return resolve(result);
+            });
+        });
+    });
+};
 
-mongoose.model('Blog', BlogSchema);
+/**
+ * 【查询单个blog】
+ * @param where {object} 查询条件
+ */
+exports.findOne = function (where) {
+    return new Promise((resolve,reject) => {
+        Blog.findOne(where).exec((err, result) => {
+            if (err) {
+                return reject(Error('查询博客失败!'));
+            }
+            return resolve(result);
+        });
+    });
+};
 
+/**
+ *【查询所有blog】
+ * @param where
+ * @param offset
+ * @param limit
+ */
+exports.findAll = function (where, offset, limit) {
+    return new Promise((resolve,reject) => {
+        Blog.find(where)
+            .sort({createdAt : -1})
+            .skip(offset)
+            .limit(limit)
+            .exec((err, result) => {
+                if (err) {
+                    return reject(Error('查询博客失败!'));
+                }
+                return resolve(result);
+            });
+    });
+    //另外的写法 exec 返回promise实例
+    //return Blog.find(conditions, fields, options).exec();
+};
 
+/**
+ *【查询所有blog】
+ * @param where
+ * @param offset
+ * @param limit
+ */
+exports.findAllAndCount = function (where, offset, limit) {
+    return new Promise((resolve,reject) => {
+        Blog.count(where, (err, count) => {
+            if(err) {
+                return reject(Error('获取博客数量失败!'));
+            }
+            Blog.find(where)
+                .sort({createdAt : -1})
+                .skip(offset)
+                .limit(limit).exec((err, docs) => {
+                    if(err) {
+                        return reject(Error('查询博客失败!'));
+                    }
+                    return resolve({
+                        count: count, rows: docs
+                    });
+                });
+        });
+    });
+};
