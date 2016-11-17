@@ -6,80 +6,19 @@
     <div class="container" >
         <div class="row">
             <main class="col-md-8">
-                <article id="98" class="post">
-                    <div class="post-head">
-                        <h1 class="post-title"><a href="/moving-to-node-js-v4-lts/">Node.js v4 LTS 成为 Ghost 推荐版本</a></h1>
-                        <div class="post-meta">
-                            <span class="author">作者：<a href="/author/wangsai/">mosaic</a></span> •
-                            <time class="post-date" datetime="2016年7月26日星期二上午9点54分" title="2016年7月26日星期二上午9点54分">2016年7月26日</time>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p>从这周起，我们将 Ghost 推荐 Node.js 版本升级为 Node.js v4 LTS。 我们这样做其实已经落后于计划了。然而，经过大量测试之后，我们确信 Ghost 可以在 Node.js v4 平台上流畅的运行并且内存消耗比原来也减少了。目前，Ghost(Pro) 上托</p>
-                    </div>
-                    <div class="post-permalink">
-                        <a href="/moving-to-node-js-v4-lts/" class="btn btn-default">阅读全文</a>
-                    </div>
+                <article id="<%= blog._id %>" class="post">
+                    <header class="post-head">
+                        <h1 class="post-title"><%= blog.title %></h1>
+                        <section class="post-meta">
+                            <span class="author">作者：<a href="/author/wangsai/"><%= blog.createdBy %></a></span> •
+                            <time class="post-date" datetime="2016年7月26日星期二上午9点54分" title="2016年7月26日星期二上午9点54分"><%= blog.createdAt %></time>
+                        </section>
+                    </header>
+                    <section class="post-content">
+                        <%= blog.markdown %>
+                    </section>
+
                 </article>
-
-                <article id="97" class="post">
-                    <div class="post-head">
-                        <h1 class="post-title"><a href="/ghost-zhuo-mian-ban-app-geng-xin-neng-gou-tong-shi-guan-li-duo-ge-ghost-bo-ke/">Ghost 桌面版 APP 正式发布，能同时管理多个 Ghost 博客</a></h1>
-                        <div class="post-meta">
-                            <span class="author">作者：<a href="/author/wangsai/">mosaic</a></span> •
-                            <time class="post-date" datetime="2016年4月28日星期四上午10点14分" title="2016年4月28日星期四上午10点14分">2016年4月28日</time>
-                        </div>
-                    </div>
-                    <div class="featured-media">
-                        <a href="/ghost-zhuo-mian-ban-app-geng-xin-neng-gou-tong-shi-guan-li-duo-ge-ghost-bo-ke/"><img class="img-responsive" src="http://static.ghostchina.com/image/4/45/e447fa21190690b28f1957d5937f4.png" alt="Ghost 桌面版 APP 正式发布，能同时管理多个 Ghost 博客"></a>
-                    </div>
-                    <div class="post-content">
-                        <p>虽然通过浏览器管理 Ghost 博客虽然很方便，但是在多个 tab 之间切换有时候也会很麻烦，嗯，如果能有一个独立的 app 应该使用起来会更爽一些！ 今天的主角来了，Ghost 桌面版 APP -- Ghost Desktop！ 目前，Ghost Desktop 还处于早期阶段</p>
-                    </div>
-                    <div class="post-permalink">
-                        <a href="/ghost-zhuo-mian-ban-app-geng-xin-neng-gou-tong-shi-guan-li-duo-ge-ghost-bo-ke/" class="btn btn-default">阅读全文</a>
-                    </div>
-
-                    <footer class="post-footer clearfix">
-                        <div class="pull-left tag-list">
-                            <i class="fa fa-folder-open-o"></i>
-
-                        </div>
-                        <div class="pull-right share">
-                        </div>
-                    </footer>
-                </article>
-
-                <article id="96" class="post">
-                    <div class="post-head">
-                        <h1 class="post-title"><a href="/install-nodejs-of-latest-version-in-ubuntu-and-debian/">为 Ubuntu 和 Debian 安装最新版本的 Node.js</a></h1>
-                        <div class="post-meta">
-                            <span class="author">作者：<a href="/author/wangsai/">mosaic</a></span> •
-                            <time class="post-date" datetime="2016年3月23日星期三凌晨12点08分" title="2016年3月23日星期三凌晨12点08分">2016年3月23日</time>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        <p>运行 Ghost 必须要安装 Node.js。但是 Ubuntu 或 Debian 的软件仓库中的 Node.js 更新较慢，甚至只能等到新版本发布才能有最新的 Node.js 用。下面我们说一下从 NodeSource 提供的仓库中安装最新版本的 Node.js。 支持的操作系</p>
-                    </div>
-                    <div class="post-permalink">
-                        <a href="/install-nodejs-of-latest-version-in-ubuntu-and-debian/" class="btn btn-default">阅读全文</a>
-                    </div>
-
-                    <footer class="post-footer clearfix">
-                        <div class="pull-left tag-list">
-                            <i class="fa fa-folder-open-o"></i>
-
-                        </div>
-                        <div class="pull-right share">
-                        </div>
-                    </footer>
-                </article>
-                <nav class="pagination" role="navigation">
-                    <span class="page-number">第 1 页 ⁄ 共 8 页</span>
-                    <a class="older-posts" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-                </nav>
-
-
             </main>
             <aside class="col-md-4 sidebar">
                 <!-- start tag cloud widget -->

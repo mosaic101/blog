@@ -40,7 +40,8 @@ exports.save = function (options) {
 exports.findById = function (id) {
     //exec 可以返回promise实例
     return new Promise((resolve,reject) => {
-        Blog.findById(id).exec((err, doc) => {
+        Blog.findById(id)
+            .exec((err, doc) => {
             if (err)
                 return reject(Error('查询博客失败!'));
             if (!doc)
@@ -83,6 +84,7 @@ exports.findAll = function (where, offset, limit) {
             .sort({createdAt : -1})
             .skip(offset)
             .limit(limit)
+            .lean()
             .exec((err, result) => {
                 if (err) {
                     return reject(Error('查询博客失败!'));

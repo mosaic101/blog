@@ -25,7 +25,6 @@ router.get('/', async (ctx, next) => {
             message:err.message
         };
     }
-
 });
 
 //添加
@@ -112,13 +111,11 @@ router.get('/one/:id', async (ctx,next) => {
         };
     }
     try {
-        var result = await blogService.one(id);
-        ctx.body = {
-            tag:'success',
-            status:1,
-            message:'查询成功!',
-            data:result
-        };
+        var blog = await blogService.one(id);
+        await ctx.render('blog/detail', {
+            title: blog.title,
+            blog: blog
+        });
     }catch (err) {
         ctx.body = {
             tag:'error',
