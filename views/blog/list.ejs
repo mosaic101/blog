@@ -11,22 +11,23 @@
                     <div class="post-head">
                         <h1 class="post-title"><a href="/blog/one/<%= blog[i]._id %>"><%= blog[i].title %></a></h1>
                         <div class="post-meta">
-                            <span class="author">作者：<a href="/author/wangsai/"><%= blog[i].createdBy %></a></span> •
+                            <span class="author">作者：<a href="/about"><%= blog[i].createdBy %></a></span> •
                             <time class="post-date" datetime="2016年7月26日星期二上午9点54分" title="2016年7月26日星期二上午9点54分"><%= blog[i].createdAt %></time>
                         </div>
                     </div>
-                    <div class="post-content">
-                        <p><%= blog[i].markdown %></p>
+                    <div class="post-content" id="markdown-content">
+                        <%- blog[i].markdown %>
                     </div>
+
                     <div class="post-permalink">
-                        <a href="/moving-to-node-js-v4-lts/" class="btn btn-default">阅读全文</a>
+                        <a href="/blog/one/<%= blog[i]._id %>" class="btn btn-default">阅读全文</a>
                     </div>
                 </article>
                 <% } %>
-                <nav class="pagination" role="navigation">
-                    <span class="page-number">第 1 页 ⁄ 共 8 页</span>
-                    <a class="older-posts" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-                </nav>
+                <!--<nav class="pagination" role="navigation">-->
+                    <!--<span class="page-number">第 1 页 ⁄ 共 8 页</span>-->
+                    <!--<a class="older-posts" href="/page/2/"><i class="fa fa-angle-right"></i></a>-->
+                <!--</nav>-->
 
 
             </main>
@@ -38,13 +39,8 @@
                         <a href="/tag/opensource/">开源</a>
                         <a href="/tag/tag-cloud/">标签云</a>
                         <a href="/tag/navigation/">导航</a>
-                        <a href="/tag/customize-page/">自定义页面</a>
                         <a href="/tag/static-page/">静态页面</a>
                         <a href="/tag/configuration/">配置文件</a>
-                        <a href="/tag/upload/">上传</a>
-                        <a href="/tag/handlebars/">Handlebars</a>
-                        <a href="/tag/email/">邮件</a>
-                        <a href="/tag/yong-hu-zhi-nan/">用户指南</a>
                         <a href="/tag-cloud/">...</a>
                     </div>
                 </div>
@@ -57,6 +53,11 @@
 
 <%- include ../base/footer.ejs %>
 <%- include ../base/javascript.ejs %>
+<script>
+    $(function () {
+
+    })
+</script>
 <%- include ../base/end.ejs %>
 
 

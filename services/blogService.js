@@ -3,6 +3,7 @@
  */
 const _ = require('lodash');
 const moment = require('moment');
+const {markdown} = require('markdown');
 const Blog = require('../models/blog');
 
 /**
@@ -43,6 +44,6 @@ exports.list = async (where, offset, limit) => {
  */
 exports.one = (id) => {
     let data = Blog.findById(id);
-    data.createdAt = moment(data.createdAt).format('YYYY年MM月DD日 HH:mm:ss');
+    // data.createdAt = moment(data.createdAt).format('YYYY年MM月DD日 HH:mm:ss');
     return data;
 };
