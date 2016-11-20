@@ -22,8 +22,37 @@ a:hover {
     text-decoration:none;
 }
 
+/*nav*/
+.navbar .navbar-toggle {
+    margin-top: 15px;
+}
+
+.navbar .navbar-toggle {
+    background-color: #009688;
+    border-color: transparent;
+}
+
+.navbar .navbar-brand {
+    height: 60px;
+}
+
+.navbar .navbar-brand img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: -8px;
+    margin-right: 6px;
+}
+
+.my-nav-pills > li > a {
+    font-size: 16px;
+    padding: 0 22px;
+    line-height: 60px;
+}
+
 .content-wrap {
-    margin-top: 80px;
+    margin-top: 90px;
 }
 
 .post {
@@ -101,4 +130,9 @@ a:hover {
     border: 1px solid #e67e22;
     border-radius:5px;
     text-decoration: none;
+}
+
+/*footer*/
+.my-footer {
+    text-align: center;
 }

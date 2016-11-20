@@ -116,7 +116,8 @@ exports.findAllAndCount = function (where, offset, limit) {
                         return reject(Error('查询博客失败!'));
                     }
                     return resolve({
-                        count: count, rows: docs
+                        count: count,
+                        rows: docs
                     });
                 });
         });

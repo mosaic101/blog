@@ -5,19 +5,28 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#example-navbar-collapse">
+                    data-target="#my-tab">
                 <span class="sr-only">切换导航</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/blog">吴建金</a>
+            <a class="navbar-brand" href="/blog">
+                <img src="/images/wujianjin.jpg">
+                <span>吴建金</span>
+            </a>
         </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/blog">博客</a></li>
-                <li><a href="/message_board">留言</a></li>
-                <li><a href="/about">关于</a></li>
+        <div class="collapse navbar-collapse" id="my-tab">
+            <ul class="nav navbar-nav navbar-right my-nav-pills">
+                <li class="active">
+                    <a href="/blog"><i class="glyphicon glyphicon-home"></i>&nbsp;博客</a>
+                </li>
+                <li>
+                    <a href="/message_board"><i class="glyphicon glyphicon-envelope"></i>&nbsp;留言</a>
+                </li>
+                <li>
+                    <a href="/about"><i class="glyphicon glyphicon-user"></i>&nbsp;关于</a>
+                </li>
             </ul>
         </div>
     </div>
