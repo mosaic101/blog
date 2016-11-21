@@ -1,53 +1,26 @@
 <%- include ../base/head.ejs %>
 <%- include ../base/css.ejs %>
+<link href="/stylesheets/admin.css" rel="stylesheet"/>
 <%- include ../base/container.ejs %>
 
-<section class="content-wrap">
-    <div class="container" >
-        <div class="row">
-            <main class="col-md-8">
-                <% for(var i = 0; i < blog.length; i++) { %>
-                <article id="<%= blog[i].fid %>" class="post">
-                    <div class="post-head">
-                        <h1 class="post-title"><a href="/blog/one/<%= blog[i]._id %>"><%= blog[i].title %></a></h1>
-                        <div class="post-meta">
-                            <span class="author">作者：<a href="/about"><%= blog[i].createdBy %></a></span> •
-                            <time class="post-date" datetime="2016年7月26日星期二上午9点54分" title="2016年7月26日星期二上午9点54分"><%= blog[i].createdAt %></time>
-                        </div>
-                    </div>
-                    <div class="post-content" id="markdown-content">
-                        <%- blog[i].markdown %>
-                    </div>
-                    <div class="post-permalink text-right">
-                        <a href="/blog/one/<%= blog[i]._id %>">阅读全文 »</a>
-                    </div>
-                </article>
-                <% } %>
-                <!--<nav class="pagination" role="navigation">-->
-                <!--<span class="page-number">第 1 页 ⁄ 共 8 页</span>-->
-                <!--<a class="older-posts" href="/page/2/"><i class="fa fa-angle-right"></i></a>-->
-                <!--</nav>-->
-            </main>
-            <aside class="col-md-4 sidebar">
-                <!-- start tag cloud widget -->
-                <div class="widget">
-                    <h4 class="title">标签云</h4>
-                    <div class="tag-cloud">
-                        <a href="/tag/opensource/">开源</a>
-                        <a href="/tag/tag-cloud/">标签云</a>
-                        <a href="/tag/navigation/">导航</a>
-                        <a href="/tag/static-page/">静态页面</a>
-                        <a href="/tag/configuration/">配置文件</a>
-                        <a href="/tag-cloud/">...</a>
-                    </div>
+<section class="admin-content-wrap">
+    <div class="container">
+        <div class="row text-center">
+            <h2>后台登录</h2>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="form-group form-group-lg">
+                    <input id="userName" type="text" placeholder="用户名" class="form-control">
                 </div>
-                <!-- end tag cloud widget -->
-            </aside>
-
+                <div class="form-group form-group-lg">
+                    <input id="pwd" type="password" placeholder="密码" class="form-control">
+                </div>
+                <button id="btnLogin" type="button" autocomplete="off" class="btn btn-success btn-lg btn-block">
+                    <i class="glyphicon glyphicon-log-in"></i> 登 录
+                </button>
+            </div>
         </div>
     </div>
 </section>
 
-<%- include ../base/footer.ejs %>
 <%- include ../base/javascript.ejs %>
 <%- include ../base/end.ejs %>
