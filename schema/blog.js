@@ -2,8 +2,8 @@
  * Created by mosaic101 on 2016/7/14.
  */
 const mongoose = require('mongoose');
-const moment = require('moment');
 const Schema = mongoose.Schema;
+const base = require('./base');
 
 var BlogSchema  = new Schema({
     //自定义序列号 依次递增
@@ -40,6 +40,7 @@ var BlogSchema  = new Schema({
     updatedBy: { type: String, required: true, ref: 'User' }
 });
 
+// BlogSchema.plugin(base);
 
 module.exports = mongoose.model('Blog', BlogSchema);
 

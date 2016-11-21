@@ -42,10 +42,12 @@ exports.findById = function (id) {
     return new Promise((resolve,reject) => {
         Blog.findById(id)
             .exec((err, doc) => {
-            if (err)
+            if (err) {
                 return reject(Error('查询博客失败!'));
-            if (!doc)
+            }
+            if (!doc) {
                 return reject(Error('没有该博客!'));
+            }
             doc.readCount ++;
             doc.save((err, result) => {
                 if (err) {

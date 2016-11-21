@@ -31,9 +31,9 @@ exports.commend = (where, offset, limit) => {
  * @param limit {number}
  */
 exports.list = async (where, offset, limit) => {
-    let data = await Blog.findAll(where, offset, limit);
+    let data =  await Blog.findAll(where, offset, limit);
     _.forEach(data,(value,key) => {
-        value.createdAt = moment(value.createdAt).format('YYYY年MM月DD日 HH:mm:ss');
+        value.createdAt = moment(value.createdAt).format('YYYY-MM-DD HH:mm');
     });
     return data;
 };
@@ -44,6 +44,5 @@ exports.list = async (where, offset, limit) => {
  */
 exports.one = (id) => {
     let data = Blog.findById(id);
-    // data.createdAt = moment(data.createdAt).format('YYYY年MM月DD日 HH:mm:ss');
     return data;
 };

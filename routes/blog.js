@@ -8,7 +8,7 @@ const blogService = require('../services/blogService');
 
 
 //首页
-router.get('/', async (ctx, next) => {
+router.get('/', async (ctx,next) => {
     let offset = ctx.params.offset || 0;
     let limit = ctx.params.limit || 10;
     let where = {state: 'published'};

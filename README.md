@@ -22,10 +22,18 @@ Folder structure
 └── views                       #视图层
 
 ```
+初步截图
+=====
+
+### pc端
+![blog_pc](./public/images/blog_pc.png)
+
+### 移动端
+![blog_pc](./public/images/blog_mobile.png)
 
 Features
 =====
-* markdown格式支持        //TODO
+* 支持markdown
 * comment评论            //TODO
 * message board留言板    //TODO
 * 支持async/await 函数 (Babel required)

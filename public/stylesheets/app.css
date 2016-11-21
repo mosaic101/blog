@@ -55,6 +55,7 @@ a:hover {
     margin-top: 90px;
 }
 
+/*post*/
 .post {
     padding: 35px;
     background: #ffffff;
@@ -85,6 +86,7 @@ a:hover {
     margin: 30px 0;
 }
 
+/*sidebar*/
 .sidebar .widget {
     background: #ffffff;
     padding: 21px 30px;
