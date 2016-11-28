@@ -69,8 +69,7 @@ router.post('/add', async (ctx,next) => {
         await blogService.add(blog);
         ctx.body = {
             tag:'success',
-            status:1,
-            message:'添加成功!'
+            status:1
         };
     }catch (err) {
         ctx.body = {

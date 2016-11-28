@@ -1,6 +1,7 @@
 /**
  * Created by mosaic101 on 2016/7/11.
  */
+'use strict';
 const path  = require('path');
 const Koa = require('koa');
 const convert = require('koa-convert');
@@ -48,6 +49,8 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 
 // 500 error
 onerror(app);
+
+app.use(require('./middlewares/returnData'));
 
 //routes
 app.use(index.routes(),index.allowedMethods());

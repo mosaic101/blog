@@ -9,7 +9,7 @@ const {markdown} = require('markdown');
 
 //index of home
 router.get('/', async (ctx, next) => {
-    ctx.redirect('/blog');
+    await ctx.redirect('/blog');
 });
 
 //查看更新log

@@ -12,6 +12,7 @@ Folder structure
 ├── config                      #config
 ├── demo                        #demo
 ├── log                         #操作日志
+├── middlewares                 #自定义中间件
 ├── models                      #model层
 ├── public                      #静态资源
 ├── routes                      #路由层

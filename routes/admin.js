@@ -14,7 +14,15 @@ router.get('/login', async (ctx,next) => {
     });
 });
 
-
+//登录
+router.post('/login', async (ctx,next) => {
+    var user = {
+        userName: ctx.request.body.userName,
+        pwd: ctx.request.body.pwd
+    };
+    ctx.session.user = user;
+    return ctx.redirect('/blog');
+});
 
 
 export default router;
