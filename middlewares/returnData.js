@@ -1,44 +1,44 @@
 /**
- * 给ctx对象添加ajax请求返回数据函数中间件
+ * ctx增加返回值中间件
  * Created by mosaic101 on 2016/11/28.
  */
 
-
-/**
- * 根据请求信息和请求类型返回数据
- * - ctx {Object} 上下文对象
- * - status {Int} 0 状态码
- * return {Function}
- */
-function data (ctx,status) {
-    /**
-     * 返回信息函数
-     * - msg {String||Object} 返回信息说明
-     * - obj {Object} 其它需要返回的函数
-     */
-    return async (msg, obj) => {
-        obj = obj || new Object;
-        if(typeof msg == 'object')
-            obj = msg;
-        else if(typeof msg == 'string')
-            obj.message = msg;
-
-        obj.status = status;
-        if(ctx.headers['x-requested-with'] === 'XMLHttpRequest') {
-            return ctx.body = obj;
-        } else {
-            return await ctx.render('alert', obj);
-        }
-    }
-}
-
 module.exports = async function (ctx, next) {
-    if(!ctx.success)
-    // 成功
-        ctx.success = data(ctx, 0);
-    if(!ctx.error)
-    // 失败
-        ctx.error = data(ctx, 1);
+    // 默认失败状态
+    const DEFAULT_ERROR_STATUS = -99;
+    // 默认成功状态
+    const DEFAULT_SUCCESS_STAUS = 1;
+    /**
+     * 增加error方法，返回统一的error方法
+     * @param message
+     * @param status
+     */
+    ctx.error = function (message, status) {
+        if (status === undefined) {
+            status = DEFAULT_ERROR_STATUS;
+        }
+        return ctx.body = {
+            tag: 'error',
+            status: status,
+            message: message || '操作失败!'
+        };
+    };
+    /**
+     * 增加success方法，直接返回统一的success结果
+     * @param data
+     * @param status
+     * @returns {*}
+     */
+    ctx.success = function (data, status) {
+        if (status === undefined) {
+            status = DEFAULT_SUCCESS_STAUS;
+        }
+        return ctx.body = {
+            tag: 'success',
+            status: status,
+            data: data
+        };
+    };
 
     await next();
-}
+};

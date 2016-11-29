@@ -14,7 +14,7 @@ router.get('/', async (ctx,next) => {
     let where = {state: 'published'};
     try {
         var blog = await blogService.list(where, offset, limit);
-        await ctx.render('blog/list', {
+        await ctx.render('./blog/list', {
             title:'吴建金的博客',
             blog: blog
         });
@@ -39,7 +39,7 @@ router.get('/one/:id', async (ctx,next) => {
     }
     try {
         var blog = await blogService.one(id);
-        await ctx.render('blog/detail', {
+        await ctx.render('./blog/detail', {
             title: blog.title,
             blog: blog
         });

@@ -1,0 +1,28 @@
+<%- include ../base/head.ejs %>
+<%- include ../base/css.ejs %>
+<link href="/stylesheets/admin.css" rel="stylesheet"/>
+
+<%- include ../base/container.ejs %>
+
+<section class="admin-content-wrap">
+    <div class="container">
+        <div class="row">
+            <textarea id="editor">
+
+            </textarea>
+        </div>
+    </div>
+</section>
+
+
+
+<%- include ../base/javascript.ejs %>
+<link href="/libs/simplemde/simplemde.min.css" rel="stylesheet"/>
+<script src="/libs/simplemde/simplemde.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+    var content = simplemde.value('this is a text editor');
+    console.log(content);
+</script>
+<script type="text/javascript" charset="utf-8" src="/javascripts/admin/topic.js"></script>
+<%- include ../base/end.ejs %>

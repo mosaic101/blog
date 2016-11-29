@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /*admin styles*/
 
-.admin-content-wrap {
+.admin-login-wrap {
     margin-top: 200px;
+}
+
+.admin-content-wrap {
+    margin-top: 100px;
 }

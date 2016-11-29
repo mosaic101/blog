@@ -18,7 +18,7 @@ $(function () {
            if (err) {
                return alert(err);
            }
-           console.log(data);
+           window.location.href = '/admin/topic';
        })
    }) 
 });

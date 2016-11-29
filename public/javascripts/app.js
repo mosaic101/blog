@@ -48,3 +48,6 @@ var $postReq = function (options,callback) {
         }
     })
 };
+
+
+//todo alert组件
