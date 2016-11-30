@@ -12,12 +12,12 @@ var BlogSchema  = new Schema({
     title: { type: String, required: true },
     //别名
     slug: { type: String, required: true },
-    //文章内容
-    markdown: { type: String, required: true },
     //分类
     type: { type: String, default: 'default' },
+    //markdown
+    markdown: { type: String, required: true },
     //html
-    html: { type: String, required: false },
+    html: { type: String, required: true },
     //状态
     state: { type: String, default: 'published' },
     //阅读量

@@ -20,6 +20,9 @@ router.post('/login', async (ctx,next) => {
         userName: ctx.request.body.userName,
         pwd: ctx.request.body.pwd
     };
+    if (user.userName != 'admin' && user.pwd != 'admin') {
+        return ctx.error('账号或密码错误！');
+    }
     ctx.session.user = user;
     return ctx.success(user);
 });

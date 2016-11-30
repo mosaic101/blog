@@ -3,9 +3,9 @@
  * Created by wujj on 2016/11/30.
  */
 var simplemde = new SimpleMDE({
-    autofocus: true, //光标聚焦
+    autofocus: false, //光标聚焦
     autosave: {
-        enabled: true,
+        enabled: false, //是否自动保存
         uniqueId: "postTopic",
         delay: 5000,
     },
@@ -25,7 +25,7 @@ var simplemde = new SimpleMDE({
         strikethrough: false,
         underscoresBreakWords: true,
     },
-    placeholder: "Type here...",
+    placeholder: "write here...",
    // previewRender: function(plainText, preview) { // Async method
    //     setTimeout(function(){
    //         preview.innerHTML = customMarkdownParser(plainText);
