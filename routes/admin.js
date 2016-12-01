@@ -34,4 +34,25 @@ router.get('/topic', async (ctx,next) => {
     });
 });
 
+//发布话题
+router.post('/topic', async (ctx,next) => {
+    let body = ctx.request.body;
+    var blog = {
+        title: body.title,
+        slug: body.title,
+        markdown: body.markdown,
+        html: body.html,
+        type:'个人博客',
+        state:'published',
+        createdBy:'wujianjin',
+        updatedBy:'wujianjin'
+    };
+    try {
+        await blogService.add(blog);
+        return ctx.success();
+    }catch (err) {
+        return ctx.error(err.message);
+    }
+});
+
 export default router;
