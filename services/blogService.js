@@ -43,6 +43,5 @@ exports.list = async (where, offset, limit) => {
  * @param id {string}   
  */
 exports.one = (id) => {
-    let data = Blog.findById(id);
-    return data;
+    return Blog.findById(id);
 };

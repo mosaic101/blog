@@ -43,7 +43,7 @@ exports.findById = function (id) {
         Blog.findById(id)
             .exec((err, doc) => {
             if (err) {
-                return reject(Error('查询博客失败!'));
+                return reject(err);
             }
             if (!doc) {
                 return reject(Error('没有该博客!'));
@@ -51,7 +51,7 @@ exports.findById = function (id) {
             doc.readCount ++;
             doc.save((err, result) => {
                 if (err) {
-                    return reject(Error('保存博客失败!'));
+                    return reject(err);
                 }
                 return resolve(result);
             });

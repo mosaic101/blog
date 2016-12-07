@@ -29,6 +29,9 @@ Folder structure
 ### pc端
 ![blog_pc](./public/images/blog_pc.png)
 
+详情页
+![topic_detail](./public/images/topic_detail.png)
+
 ### 移动端
 ![blog_pc](./public/images/blog_mobile.png)
 
