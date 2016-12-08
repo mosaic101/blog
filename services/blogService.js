@@ -33,6 +33,7 @@ exports.commend = (where, offset, limit) => {
 exports.list = async (where, offset, limit) => {
     let data =  await Blog.findAll(where, offset, limit);
     _.forEach(data,(value,key) => {
+        value.html = value.html.split('\n')[0]; //TODO 截取第一部分
         value.createdAt = moment(value.createdAt).format('YYYY-MM-DD HH:mm');
     });
     return data;
