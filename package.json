@@ -30,6 +30,7 @@
     "ejs": "^2.4.2",
     "getconfig": "^3.0.0",
     "ioredis": "^2.4.0",
+    "joi": "^10.0.5",
     "jwt-simple": "^0.5.0",
     "koa": "^2.0.0",
     "koa-bodyparser": "^2.0.1",

@@ -18,18 +18,9 @@ router.post('/register', async (ctx,next) => {
     //返回的promise对象，也可以使用.then().catch()
     try {
         let result = await userService.register(user);
-        ctx.body = {
-            tag:'success',
-            status:1,
-            message:'注册成功!',
-            data:result
-        };
+        ctx.success(result);
     }catch (err) {
-        ctx.body = {
-            tag:'error',
-            status:err.status,
-            message:err.message
-        };
+        ctx.error(err);
     }
 });
 
@@ -48,18 +39,9 @@ router.post('/login', async (ctx,next) => {
     }
     try {
         var result = await userService.login(user);
-        ctx.body = {
-            tag:'success',
-            status:1,
-            message:'登录成功!',
-            token:result
-        };
+        ctx.success(result);
     }catch (err) {
-        ctx.body = {
-            tag:'error',
-            status:err.status,
-            message:err.message
-        };
+        ctx.error(err);
     }
 });
 
@@ -76,17 +58,9 @@ router.get('/one', async (ctx,next) => {
     try {
         let conditions = {_id: _id};
         await userService.one(conditions);
-        ctx.body = {
-            tag:'success',
-            status:1,
-            message:'查询成功!'
-        };
+        ctx.success();
     }catch (err) {
-        ctx.body = {
-            tag:'error',
-            status:err.status,
-            message:err.message
-        };
+        ctx.error(err);
     }
 });
 

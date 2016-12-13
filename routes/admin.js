@@ -51,7 +51,7 @@ router.post('/topic', async (ctx,next) => {
         await blogService.add(blog);
         return ctx.success();
     }catch (err) {
-        return ctx.error(err.message);
+        return ctx.error(err);
     }
 });
 

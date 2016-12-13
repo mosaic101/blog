@@ -19,11 +19,7 @@ router.get('/', async (ctx,next) => {
             blog: blog
         });
     }catch (err) {
-        ctx.body = {
-            tag:'error',
-            status:err.status,
-            message:err.message
-        };
+        ctx.error(err);
     }
 });
 
@@ -44,11 +40,7 @@ router.get('/one/:id', async (ctx,next) => {
             blog: blog
         });
     }catch (err) {
-        ctx.body = {
-            tag:'error',
-            status:err.status,
-            message:err.message
-        };
+        ctx.error(err);
     }
 });
 
@@ -67,16 +59,9 @@ router.post('/add', async (ctx,next) => {
     };
     try {
         await blogService.add(blog);
-        ctx.body = {
-            tag:'success',
-            status:1
-        };
+        ctx.success();
     }catch (err) {
-        ctx.body = {
-            tag:'error',
-            status:err.status,
-            message:err.message
-        };
+        ctx.error(err);
     }
 });
 
