@@ -1,5 +1,6 @@
+bin/
+common/
+demo/
 node_modules/
 log/
 public/
-demo/
-bin/

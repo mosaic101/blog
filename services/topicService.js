@@ -4,14 +4,14 @@
 const _ = require('lodash');
 const moment = require('moment');
 const {markdown} = require('markdown');
-const Blog = require('../models/blog');
+const Topic = require('../models/topic');
 
 /**
  * 【add】
- * @param blog {object}
+ * @param Topic {object}
  */
-exports.add = (blog) => {
-    return Blog.save(blog);
+exports.add = (Topic) => {
+    return Topic.save(Topic);
 };
 
 /**
@@ -21,7 +21,7 @@ exports.add = (blog) => {
  * @param limit {number}
  */
 exports.commend = (where, offset, limit) => {
-    return Blog.findAll(where, offset, limit);
+    return Topic.findAll(where, offset, limit);
 };
 
 /**
@@ -31,7 +31,7 @@ exports.commend = (where, offset, limit) => {
  * @param limit {number}
  */
 exports.list = async (where, offset, limit) => {
-    let data =  await Blog.findAll(where, offset, limit);
+    let data =  await Topic.findAll(where, offset, limit);
     _.forEach(data,(value,key) => {
         value.html = value.html.split('\n')[0]; //TODO 截取第一部分
         value.createdAt = moment(value.createdAt).format('YYYY-MM-DD HH:mm');
@@ -44,5 +44,5 @@ exports.list = async (where, offset, limit) => {
  * @param id {string}   
  */
 exports.one = (id) => {
-    return Blog.findById(id);
+    return Topic.findById(id);
 };

@@ -2,17 +2,17 @@
  * Created by mosaic101 on 2016/7/19.
  */
 const Promise = require('bluebird');
-const {Blog} = require('../schema/index');
+const {Topic} = require('../schema/index');
 
 /**
- * 【添加blog】
+ * 【添加Topic】
  * @param options {object}
  */
 exports.save = function (options) {
-    var action = new Blog(options);
+    var action = new Topic(options);
     return new Promise((resolve, reject) => {
         //添加fid
-        Blog.find().sort({fid:-1}).limit(1).exec((err, doc) => {
+        Topic.find().sort({fid:-1}).limit(1).exec((err, doc) => {
             if(err) {
                 return reject({message:'查询fid失败！', err:err, status:-99});
             }
@@ -33,14 +33,14 @@ exports.save = function (options) {
 };
 
 /**
- * 【根据id查询单个blog】
+ * 【根据id查询单个Topic】
  * @intro 每次点击 readCount + 1
  * @param id {object} id
  */
 exports.findById = function (id) {
     //exec 可以返回promise实例
     return new Promise((resolve,reject) => {
-        Blog.findById(id)
+        Topic.findById(id)
             .exec((err, doc) => {
             if (err) {
                 return reject(err);
@@ -60,12 +60,12 @@ exports.findById = function (id) {
 };
 
 /**
- * 【查询单个blog】
+ * 【查询单个Topic】
  * @param where {object} 查询条件
  */
 exports.findOne = function (where) {
     return new Promise((resolve,reject) => {
-        Blog.findOne(where).exec((err, result) => {
+        Topic.findOne(where).exec((err, result) => {
             if (err) {
                 return reject(Error('查询博客失败!'));
             }
@@ -75,14 +75,14 @@ exports.findOne = function (where) {
 };
 
 /**
- *【查询所有blog】
+ *【查询所有Topic】
  * @param where
  * @param offset
  * @param limit
  */
 exports.findAll = function (where, offset, limit) {
     return new Promise((resolve,reject) => {
-        Blog.find(where)
+        Topic.find(where)
             .sort({createdAt : -1})
             .skip(offset)
             .limit(limit)
@@ -95,22 +95,22 @@ exports.findAll = function (where, offset, limit) {
             });
     });
     //另外的写法 exec 返回promise实例
-    //return Blog.find(conditions, fields, options).exec();
+    //return Topic.find(conditions, fields, options).exec();
 };
 
 /**
- *【查询所有blog】
+ *【查询所有Topic】
  * @param where
  * @param offset
  * @param limit
  */
 exports.findAllAndCount = function (where, offset, limit) {
     return new Promise((resolve,reject) => {
-        Blog.count(where, (err, count) => {
+        Topic.count(where, (err, count) => {
             if(err) {
                 return reject(Error('获取博客数量失败!'));
             }
-            Blog.find(where)
+            Topic.find(where)
                 .sort({createdAt : -1})
                 .skip(offset)
                 .limit(limit).exec((err, docs) => {

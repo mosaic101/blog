@@ -18,5 +18,5 @@ mongoose.connect(DATABASE_URL, {server: {poolSize: 20}}, (err) => {
 });
 
 
-exports.Blog =  require('./blog');
+exports.Topic =  require('./topic');
 exports.User = require('./user');

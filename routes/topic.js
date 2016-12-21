@@ -4,7 +4,7 @@
  */
 const router = require('koa-router')();
 const _ = require('lodash');
-const blogService = require('../services/blogService');
+const topicService = require('../services/topicService');
 
 
 //首页
@@ -13,10 +13,10 @@ router.get('/', async (ctx,next) => {
     let limit = ctx.params.limit || 10;
     let where = {state: 'published'};
     try {
-        var blog = await blogService.list(where, offset, limit);
-        await ctx.render('./blog/list', {
+        var topic = await topicService.list(where, offset, limit);
+        await ctx.render('./topic/list', {
             title:'吴建金的博客',
-            blog: blog
+            blog: topic
         });
     }catch (err) {
         ctx.error(err);
@@ -34,10 +34,10 @@ router.get('/one/:id', async (ctx,next) => {
         };
     }
     try {
-        var blog = await blogService.one(id);
-        await ctx.render('./blog/detail', {
+        var topic = await topicService.one(id);
+        await ctx.render('./topic/detail', {
             title: blog.title,
-            blog: blog
+            blog: topic
         });
     }catch (err) {
         ctx.error(err);
@@ -46,7 +46,7 @@ router.get('/one/:id', async (ctx,next) => {
 
 //添加
 router.post('/add', async (ctx,next) => {
-    var blog = {
+    var topic = {
         title:'test  test test test',
         slug:'test 2 test 2 test 2',
         markdown:'<div> helloWorld </div>',
@@ -58,7 +58,7 @@ router.post('/add', async (ctx,next) => {
         updatedBy:'wujianjin'
     };
     try {
-        await blogService.add(blog);
+        await topicService.add(topic);
         ctx.success();
     }catch (err) {
         ctx.error(err);

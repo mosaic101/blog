@@ -4,9 +4,9 @@
  */
 
 module.exports =  (schema, options) => {
-    options = options || {};
+    // options = options || {};
     //生成校验中间件
-    return async (ctx, next) => {
+    // return async (ctx, next) => {
         // let toValidate = {};
         // if (!schema) {
         //     await next();
@@ -27,5 +27,5 @@ module.exports =  (schema, options) => {
         //     }
         //     await next();
         // });
-    }
+    // }
 };

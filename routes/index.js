@@ -29,11 +29,11 @@ router.get('/change', async (ctx, next) => {
 
 
 
-const blog = require('./blog');
+const topic = require('./topic');
 const user = require('./user');
 const admin = require('./admin');
 
-router.use('/blog', blog.routes(),blog.allowedMethods());
+router.use('/topic', topic.routes(),topic.allowedMethods());
 router.use('/user', user.routes(),user.allowedMethods());
 router.use('/admin', admin.routes(),admin.allowedMethods());
 

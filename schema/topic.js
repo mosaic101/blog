@@ -4,7 +4,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var BlogSchema  = new Schema({
+var TopicSchema  = new Schema({
     //自定义序列号 依次递增
     fid: { type: Number, required: true },
     //title
@@ -40,6 +40,6 @@ var BlogSchema  = new Schema({
 });
 
 
-module.exports = mongoose.model('Blog', BlogSchema);
+module.exports = mongoose.model('Topic', TopicSchema);
 
 
