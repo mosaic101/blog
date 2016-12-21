@@ -4,7 +4,7 @@
  */
 const router = require('koa-router')();
 const _ = require('lodash');
-const blogService = require('../services/blogService');
+const blogService = require('../services/topicService');
 
 
 //后台登录页

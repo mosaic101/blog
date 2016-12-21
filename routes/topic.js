@@ -16,7 +16,7 @@ router.get('/', async (ctx,next) => {
         var topic = await topicService.list(where, offset, limit);
         await ctx.render('./topic/list', {
             title:'吴建金的博客',
-            blog: topic
+            topic: topic
         });
     }catch (err) {
         ctx.error(err);
@@ -24,7 +24,7 @@ router.get('/', async (ctx,next) => {
 });
 
 //单个详情
-router.get('/one/:id', async (ctx,next) => {
+router.get('/:id', async (ctx,next) => {
     let id = ctx.params.id;
     if (!id || !_.isString(id)) {
         ctx.body = {
@@ -36,8 +36,8 @@ router.get('/one/:id', async (ctx,next) => {
     try {
         var topic = await topicService.one(id);
         await ctx.render('./topic/detail', {
-            title: blog.title,
-            blog: topic
+            title: topic.title,
+            topic: topic
         });
     }catch (err) {
         ctx.error(err);
