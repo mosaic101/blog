@@ -88,12 +88,12 @@ a:hover {
 
 /*sidebar*/
 .sidebar .widget {
-    background: #ffffff;
-    padding: 21px 30px;
+    margin-bottom: 35px;
 }
 
 .widget {
-    margin-bottom: 35px;
+    background: #ffffff;
+    padding: 21px 30px;
 }
 
 .widget .title {
