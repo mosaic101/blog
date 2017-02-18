@@ -3,6 +3,6 @@
  */
 
 module.exports = {
-    returnData: require('./returnData'),
-    validator: require('./validator')
+    ctx: require('./ctx'),
+    joiValidator: require('./joiValidator')
 };

@@ -4,6 +4,7 @@
  */
 const router = require('koa-router')();
 const _ = require('lodash');
+const { joivalidator } = require('../middlewares/index');
 const topicService = require('../services/topicService');
 
 

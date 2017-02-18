@@ -50,7 +50,8 @@ app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
 // 500 error
 onerror(app);
 
-app.use(require('./middlewares/index').returnData);
+//add ctx.error(),ctx.success()
+app.use(require('./middlewares/index').ctx);
 
 //routes
 app.use(index.routes(),index.allowedMethods());
