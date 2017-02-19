@@ -1,8 +1,7 @@
 /**
- * Created by wujj on 2016/5/31.
+ * Created by wujj on 2016/8/30.
  * introduction: 单元测试
  */
-//TODO 用import 不支持 mocha
 var app = require('../app');
 var request = require('supertest')(app);
 var should = require('should');

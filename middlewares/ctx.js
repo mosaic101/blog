@@ -6,11 +6,9 @@
 module.exports = async (ctx, next) => {
     // 默认失败状态
     const DEFAULT_ERROR_STATUS = -99;
-    //验证参数失败状态
-    const DEFAULT_VALIDATION_ERROR = -10;
     // 默认成功状态
     const DEFAULT_SUCCESS_STATUS = 1;
-
+    const DEFAULT_VALIDATION_ERROR = -10;
     /**
      * 增加error方法，返回统一的error方法
      * @param error
@@ -47,6 +45,20 @@ module.exports = async (ctx, next) => {
             tag: 'success',
             status: status === undefined ? DEFAULT_SUCCESS_STATUS : status,
             data: data
+        };
+    };
+    /**
+     * 增加validateFail方法，直接返回统一的校验失败结果
+     * @param failures
+     * @param status
+     * @returns {*}
+     */
+    res.validationFailed = function (failures, status) {
+        return ctx.body = {
+            tag: 'error',
+            status: status === undefined ? DEFAULT_VALIDATION_ERROR : status,
+            message: '参数错误！',
+            failures: failures
         };
     };
     await next();
