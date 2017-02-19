@@ -3,6 +3,5 @@
  */
 
 module.exports = {
-    ctx: require('./ctx'),
-    joiValidator: require('./joiValidator')
+    ctx: require('./ctx')
 };

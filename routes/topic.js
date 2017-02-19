@@ -4,12 +4,11 @@
  */
 const router = require('koa-router')();
 const _ = require('lodash');
-const { joivalidator } = require('../middlewares/index');
 const topicService = require('../services/topicService');
 
 
 //首页
-router.get('/', async (ctx,next) => {
+router.get('/',async (ctx,next) => {
     let offset = ctx.params.offset || 0;
     let limit = ctx.params.limit || 10;
     let where = {state: 'published'};

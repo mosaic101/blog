@@ -53,7 +53,7 @@ module.exports = async (ctx, next) => {
      * @param status
      * @returns {*}
      */
-    res.validationFailed = function (failures, status) {
+    ctx.validationFailed = function (failures, status) {
         return ctx.body = {
             tag: 'error',
             status: status === undefined ? DEFAULT_VALIDATION_ERROR : status,
