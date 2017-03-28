@@ -36,4 +36,4 @@ router.use('/topic', topic.routes(),topic.allowedMethods());
 router.use('/admin', admin.routes(),admin.allowedMethods());
 
 
-export default router;
+module.exports = router

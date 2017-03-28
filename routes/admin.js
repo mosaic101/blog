@@ -55,4 +55,4 @@ router.post('/topic', async (ctx,next) => {
     }
 });
 
-export default router;
+module.exports = router

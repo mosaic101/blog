@@ -66,6 +66,4 @@ router.post('/add', async (ctx,next) => {
 });
 
 
-
-
-export default router;
+module.exports = router

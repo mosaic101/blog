@@ -81,4 +81,4 @@ app.on('error', (err, ctx) => {
 });
 
 
-export default app;
+module.exports = app
