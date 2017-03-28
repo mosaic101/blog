@@ -8,7 +8,7 @@ Folder structure
 
 ```
 .
-├── bin                         #启动脚本 node ./bin/run
+├── bin                         #启动脚本 node ./bin/www
 ├── config                      #config
 ├── demo                        #demo
 ├── log                         #操作日志
@@ -41,7 +41,7 @@ Features
 * comment评论            //TODO
 * message board留言板    //TODO
 * 支持async/await 函数 (Babel required)
-* Node v7.6.0+
+* node.js v7.6.0+
 * 启动 npm start
 * mongoose mongodb ORM module
 
@@ -56,7 +56,7 @@ Install
 
 Notice
 =====
-    1. 依赖Node.js 4.X (Koa requires node v4.0.0 or higher for (partial) ES2015 support.)
+    1. 依赖node.js v7.6.0+ (Koa requires node v7.6.0 or higher for ES2015 and async function support.)
     2. koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
     3. async/await 函数是es7的特性,async函数里使用await可以做到和yield类似的效果，但await只能接promise对象
     4. 用bluebird替换原生Promise,blurbird的性能是V8里内置的Promise 3倍左右bluebird 的优化方式见 https://github.com/petkaantonov/bluebird/wiki/Optimization-killers ）。

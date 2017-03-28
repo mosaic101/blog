@@ -29,11 +29,12 @@ router.get('/change', async (ctx, next) => {
 
 
 
-const topic = require('./topic');
-const admin = require('./admin');
+//fixme An Error Has Occurred
+// const topic = require('./topic');
+// const admin = require('./admin');
 
-router.use('/topic', topic.routes(),topic.allowedMethods());
-router.use('/admin', admin.routes(),admin.allowedMethods());
+// router.use('/topic', topic.routes(),topic.allowedMethods());
+// router.use('/admin', admin.routes(),admin.allowedMethods());
 
 
 module.exports = router

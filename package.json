@@ -19,8 +19,9 @@
   "bugs": "https://github.com/mosaic101/koa2-blog/issues",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./bin/run",
-    "start": "pm2 start node ./bin/run",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "pm2": "pm2 start ./bin/www",
     "test": "mocha -u bdd"
   },
   "dependencies": {
