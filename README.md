@@ -41,7 +41,7 @@ Features
 * comment评论            //TODO
 * message board留言板    //TODO
 * 支持async/await 函数 (Babel required)
-* Node 4.X+
+* Node v7.6.0+
 * 启动 npm start
 * mongoose mongodb ORM module
 
@@ -51,8 +51,8 @@ Install
     2. cd koa2-blog
     3. npm install
     4. npm start
-    5. http://localhost:3000
-    6. 需要本地安装redis，并启动
+    5. http://localhost:4000
+    <!--6. 需要本地安装redis，并启动-->
 
 Notice
 =====
