@@ -2,7 +2,7 @@
  * Created by mosaic101 on 2016/7/19.
  */
 const Promise = require('bluebird');
-const {Topic} = require('../schema/index');
+const { Topic } = require('../schema/index');
 
 /**
  * 【添加Topic】

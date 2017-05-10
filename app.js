@@ -9,8 +9,7 @@ const json = require('koa-json');
 const Bodyparser = require('koa-bodyparser');
 const views = require('koa-views');
 const favicon = require('koa-favicon');
-const session = require('koa-generic-session');
-const redisStore = require('koa-redis');
+const session = require('koa-session');
 const config = require('getconfig');
 const onerror = require('koa-onerror');
 const logger = require('koa-logger');
@@ -27,25 +26,28 @@ const bodyparser = new Bodyparser();
 //设置一个签名 Cookie 的秘钥,也可以借助KeyGrip生成你想的一个实例
 app.keys = ['keys', 'koa2-blog'];
 
+//settings session
+const CONFIG = {
+  key: 'koa:sess', /** (string) cookie key (default is koa:sess) */
+  maxAge: 86400000, /** (number) maxAge in ms (default is 1 days) */
+  overwrite: true, /** (boolean) can overwrite or not (default true) */
+  httpOnly: true, /** (boolean) httpOnly or not (default true) */
+  signed: true, /** (boolean) signed or not (default true) */
+};
+app.use(session(CONFIG, app))
+
 // middlewares
 app.use(convert(require('koa-static')(path.join(__dirname + '/public'))));
 app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
-//settings session
-app.use(session({
-    store: redisStore({
-        host: config.redis.host,
-        port: config.redis.port
-    })
-}));
 
 //ejs engine
 app.use(views(__dirname + '/views', {
     extension: 'ejs'
 }));
 
-app.use(favicon(path.join(__dirname, "/public/favicon.ico")));
+app.use(convert(favicon(path.join(__dirname, "/public/favicon.ico"))));
 
 // 500 error
 onerror(app);

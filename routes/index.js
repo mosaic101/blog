@@ -4,15 +4,14 @@
  */
 const router = require('koa-router')();
 const fs = require('fs');
-const {markdown} = require('markdown');
+const { markdown } = require('markdown');
 
-
-//index of home
+// index.html
 router.get('/', async (ctx, next) => {
-    await ctx.redirect('/topic');
+    await ctx.render('index.html');
 });
 
-//查看更新log
+// 查看更新log
 router.get('/change', async (ctx, next) => {
     let changeLog = function () {
         return new Promise((resolve,reject) => {
@@ -27,14 +26,11 @@ router.get('/change', async (ctx, next) => {
     ctx.body = await changeLog();
 });
 
+const topic = require('./topic');
+const admin = require('./admin');
 
-
-//fixme An Error Has Occurred
-// const topic = require('./topic');
-// const admin = require('./admin');
-
-// router.use('/topic', topic.routes(),topic.allowedMethods());
-// router.use('/admin', admin.routes(),admin.allowedMethods());
+router.use('/topic', topic.routes(),topic.allowedMethods());
+router.use('/admin', admin.routes(),admin.allowedMethods());
 
 
 module.exports = router

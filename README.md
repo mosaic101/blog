@@ -27,10 +27,20 @@ Folder structure
 =====
 
 ### pc端
+首页
+![welcome](./public/images/welcome.png)
+
+列表
 ![blog_pc](./public/images/blog_pc.png)
 
-详情页
+详情
 ![topic_detail](./public/images/topic_detail.png)
+
+后台登录
+![admin_login](./public/images/admin_login.png)
+
+发布
+![admin_public](./public/images/admin_public.png)
 
 ### 移动端
 ![blog_pc](./public/images/blog_mobile.png)
@@ -52,14 +62,13 @@ Install
     3. npm install
     4. npm start
     5. http://localhost:4000
-    <!--6. 需要本地安装redis，并启动-->
+    6. 需要本地安装mongodb，并启动
 
 Notice
 =====
     1. 依赖node.js v7.6.0+ (Koa requires node v7.6.0 or higher for ES2015 and async function support.)
-    2. koa-session 依赖包是基于cookie的,已经好久不维护了。这里用 koa-generic-session
-    3. async/await 函数是es7的特性,async函数里使用await可以做到和yield类似的效果，但await只能接promise对象
-    4. 用bluebird替换原生Promise,blurbird的性能是V8里内置的Promise 3倍左右bluebird 的优化方式见 https://github.com/petkaantonov/bluebird/wiki/Optimization-killers ）。
+    2. async/await 函数是es7的特性,async函数里使用await可以做到和yield类似的效果，但await只能接受promise对象
+    3. 用bluebird替换原生Promise,blurbird的性能是V8里内置的Promise 3倍左右bluebird 的优化方式见 https://github.com/petkaantonov/bluebird/wiki/Optimization-killers ）。
 
 Ps
 =====

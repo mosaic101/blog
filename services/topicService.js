@@ -8,10 +8,10 @@ const Topic = require('../models/topic');
 
 /**
  * 【add】
- * @param Topic {object}
+ * @param topic {object}
  */
-exports.add = (Topic) => {
-    return Topic.save(Topic);
+exports.add = (topic) => {
+    return Topic.save(topic);
 };
 
 /**

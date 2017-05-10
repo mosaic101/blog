@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>吴建金的博客</title>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+
+<body>
+  <div class="welcome-bg"></div>
+  <div id="overlay" class="tc">
+    <h1>Mosaic's Home</h1>
+    <p class="welcome-text"></p>
+  </div>
+</body>
+<script src="/libs/jquery.min.js"></script>
+<script src="/javascripts/index.js"></script>
+<script>
+  $(function () {
+    var isReturn = 0;
+    a();
+    b();
+  });
+  function a() {
+    $(".welcome-text").lbyl({
+      content: 'Welcome To My World',
+      speed: 100,
+      type: 'show'
+    });
+    return isReturn = 1;
+  }
+  function b() {
+    setTimeout(function () {
+      if (isReturn == 1) {
+        $("#overlay").append('<a href="/topic" class="welcome-btn" ></a>')
+      }
+    }, 2000)
+  }
+
+</script>
+
+</html>
