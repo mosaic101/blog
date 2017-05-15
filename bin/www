@@ -86,5 +86,6 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+  console.info('koa2_blog is listening on ' + bind);
   debug('Listening on ' + bind);
 }
