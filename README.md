@@ -1,10 +1,8 @@
-一个基于Nodejs koa2的博客;
-使用了ejs渲染模板，目前只有首页;
-这个blog目前只是个基本雏形，完善中 ^_^！
+# koa2-blog
+一个基于Nodejs koa2的博客; 功能完善中 ^_^！
 
 
-Folder structure
-=====
+## Folder structure
 
 ```
 .
@@ -23,54 +21,54 @@ Folder structure
 └── views                       #视图层
 
 ```
-初步截图
-=====
+## Screenshot
 
-### pc端
-首页
+
+### PC
+
+### Home 
 ![welcome](./public/images/welcome.png)
 
-列表
+### Topic list
 ![blog_pc](./public/images/blog_pc.png)
 
-详情
+### Topic etail
 ![topic_detail](./public/images/topic_detail.png)
 
-后台登录
+### Admin
 ![admin_login](./public/images/admin_login.png)
 
-发布
+### Public topic
 ![admin_public](./public/images/admin_public.png)
 
-### 移动端
+### Mobile
 ![blog_pc](./public/images/blog_mobile.png)
 
-Features
-=====
-* 支持markdown
-* comment评论            //TODO
-* message board留言板    //TODO
-* 支持async/await 函数 (Babel required)
+## Features
+
+* support markdown
+* comment module     		      //TODO
+* message board module  	      //TODO
+* support async/await
+* support yarn 
 * node.js v7.6.0+
-* 启动 npm start
 * mongoose mongodb ORM module
 
-Install
-=====
+## Install
+
     1. git clone https://github.com/mosaic101/koa2-blog.git
     2. cd koa2-blog
-    3. npm install
+    3. npm install or yarn install
     4. npm start
     5. http://localhost:4000
-    6. 需要本地安装mongodb，并启动
+    6. need to install mongoDB and start mongoDB
 
-Notice
-=====
+## Notice
     1. 依赖node.js v7.6.0+ (Koa requires node v7.6.0 or higher for ES2015 and async function support.)
     2. async/await 函数是es7的特性,async函数里使用await可以做到和yield类似的效果，但await只能接受promise对象
     3. 用bluebird替换原生Promise,blurbird的性能是V8里内置的Promise 3倍左右bluebird 的优化方式见 https://github.com/petkaantonov/bluebird/wiki/Optimization-killers ）。
 
-Ps
+## PS
 =====
     1. 觉得有帮助的顺手给颗星，十分谢谢！
     2. 欢迎大家提宝贵意见！
