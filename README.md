@@ -1,4 +1,3 @@
 # blog
-个人网站， rebuilding~~~
+rebuilding~~~
 
-- [changelog](doc/changelog.md)
