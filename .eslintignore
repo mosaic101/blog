@@ -1,6 +1,6 @@
-bin/
-common/
-demo/
+
+logs/
 node_modules/
-log/
-public/
+out/
+
+

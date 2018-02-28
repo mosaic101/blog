@@ -1,36 +1,34 @@
 {
-  "name": "koa2-blog",
-  "version": "1.1.0",
-  "description": "Just a blog with koa@2",
-  "author": "mosaic101",
+  "name": "blog",
+  "version": "2.0.0",
+  "description": "personal website",
+  "private": true,
+  "scripts": {
+    "start": "node ./src/bin/www",
+    "dev": "DEBUG=app* ./node_modules/.bin/nodemon ./src/bin/www",
+    "prd": "pm2 start ./src/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/mosaic101/blog.git",
+  "bugs": "https://github.com/mosaic101/blog/issues",
+  "author": "Jianjin Wu <mosaic101@foxmail.com>",
   "homepage": "http://www.wujianjin.com",
-  "private": false,
   "keywords": [
     "node",
     "blog",
     "koa2",
     "mongoDB",
-    "es6"
+    "es6",
+    "es7"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/mosaic101/koa2-blog.git"
-  },
-  "bugs": "https://github.com/mosaic101/koa2-blog/issues",
   "license": "MIT",
-  "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
-    "pm2": "pm2 start ./bin/www",
-    "test": "mocha -u bdd"
-  },
   "dependencies": {
-    "bluebird": "^3.4.1",
-    "debug": "^2.2.0",
+    "bluebird": "^3.5.1",
+    "debug": "^2.6.3",
     "ejs": "^2.4.2",
-    "getconfig": "^3.0.0",
-    "ioredis": "^2.4.0",
-    "joi": "^10.0.5",
+    "getconfig": "^4.4.1",
+    "joi": "^13.1.2",
     "jwt-simple": "^0.5.0",
     "koa": "^2.2.0",
     "koa-bodyparser": "^2.0.1",
@@ -49,14 +47,16 @@
     "markdown": "^0.5.0",
     "moment": "^2.14.1",
     "mongoose": "^4.5.4",
-    "validator": "^5.4.0"
+    "pm2": "^2.10.1"
   },
   "devDependencies": {
-    "eslint": "^3.9.1",
-    "mocha": "^2.5.3",
+    "eslint": "^4.17.0",
+    "mocha": "^5.0.0",
     "nodemon": "^1.9.2",
-    "pm2": "^2.0.19",
     "should": "^9.0.2",
     "supertest": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=7.6.0"
   }
 }
