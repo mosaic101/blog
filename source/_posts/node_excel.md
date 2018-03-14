@@ -1,9 +1,8 @@
 ---
-title: nodejs中几个excel模块的简单对比
+title: Nodejs 中几个 Excel 模块的简单对比
 date: 2016-12-06
-categories: node
-tags: node
-
+categories: Nodejs
+tags: [Excel]
 ---
 
 找了4个star较多的且还在维护的excel模块测试一下，导入问题不大，主要测试的是导出功能。

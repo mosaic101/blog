@@ -1,9 +1,8 @@
 ---
-title: 我眼中的nodeJS
+title: 我眼中的 Nodejs
 date: 2016-07-11
-categories: node
-tags: node
-
+categories: Nodejs
+tags: Nodejs
 ---
 
 ### 一、前言

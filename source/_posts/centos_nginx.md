@@ -1,9 +1,8 @@
 ---
-title: centos下安装nginx
+title: Centos下安装 Nginx
 date: 2016-11-03
-categories: linux
-tags: linux
-
+categories: Linux
+tags: [Centos, Nginx]
 ---
 
 nginx是一个高性能的HTTP和反向代理服务器；我的vps下安装的是32位的centos系统；
