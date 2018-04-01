@@ -2,8 +2,11 @@
   "name": "blog",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "start": "./node_modules/.bin/hexo server"
+  },
   "hexo": {
-    "version": "3.6.0"
+    "version": "3.7.0"
   },
   "dependencies": {
     "gitment": "0.0.3",
