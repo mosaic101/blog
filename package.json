@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/hexo server"
+    "start": "./node_modules/.bin/hexo server",
+    "generate": "./node_modules/.bin/hexo generate"
   },
   "hexo": {
     "version": "3.7.0"
