@@ -7,7 +7,7 @@ $ npm install hexo-cli -g
 $ hexo init blog
 $ cd blog
 $ npm install
-$ hexo server
+$ npm start
 ```
 
 使用 Hexo 生成静态文件快速而且简单。
@@ -19,4 +19,9 @@ $ hexo generate --watch
 ```bash
 $ hexo new [layout] <title>
 $ hexo publish [layout] <title>
+```
+
+## Deploy
+```bash
+$ npm run deploy
 ```

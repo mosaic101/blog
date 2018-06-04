@@ -77,4 +77,11 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: rsync
+  host: 140.143.236.177
+  user: ubuntu
+  root: /home/ubuntu/code/blog
+  port: 22
+  delete: true
+  verbose: false
+  ignore_errors: true
