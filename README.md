@@ -25,3 +25,4 @@ $ hexo publish [layout] <title>
 ```bash
 $ npm run deploy
 ```
+
